@@ -1,0 +1,40 @@
+<!--index.wxml-->
+<view class="container">
+  <image class='back-img' src='./back.jpg'></image>
+  <image class='user-avatar' src='{{avatarUrl}}'></image>
+
+  <image class='auto-qiao' src='{{autoImgUrl}}' bindtap='autoQiao'>自动敲</image>
+
+  <view class='music-select'>
+    <view class='music-btn' bindtap='showMusicList'>{{musics[musicSelect].musicName}}</view>
+    <view class='music-toggle' wx:if="{{isMusic}}">
+      <view class="music-item {{musicSelect===index?'music-active':''}}" wx:for="{{musics}}" data-index="{{index}}" bindtap='changeMusic' wx:key="{{index}}">{{item.musicName}}</view>
+    </view>
+  </view>
+
+  <view class="main-content">
+    <image class='light-img {{isLight?"light-active":""}}' src='./fo-light.png'></image>
+    <image class='light-img {{isLight?"light-active":""}}' src='./fo-light2.png'></image>
+    <image class='fo-img' src='./fo.png'></image>
+    <view class='score-text'>
+      <text>{{tapNum}}</text>
+    </view>
+    <view class='muyu-box'>
+
+      <image bindtap="qiao" class="muyu-img" src="./muyu-s.png"></image>
+      <image class='muyu-out {{isMuyuActive?"muyu-active":""}}' src="./muyu.png"> src="./muyu.png"></image>
+    </view>
+
+  </view>
+  <!-- <view class='words-box'>
+    <view class='words-window' style='top:{{top}}rpx'>这是一段经文,他会不断不断滚动这是一段经文,他会不断不断滚动这是一段经文,他会不断不断滚动这是一段经文,他会不断不断滚动这是一段经文,他会不断不断滚动这是一段经文,他会不断不断滚动这是一段经文,他会不断不断滚动这是一段经文,他会不断不断滚动这是一段经文,他会不断不断滚动这是一段经文,他会不断不断滚动这是一段经文,他会不断不断滚动这是一段经文,他会不断不断滚动这是一段经文,他会不断不断滚动</view>
+  </view> -->
+
+  <view class='ranking-box {{isHidden?"ranking-hidden":""}}'>
+    <view class='ranking-banner' bindtap='upToggle'>{{isHidden?'显示排行榜':'关闭排行榜'}}</view>
+    <view class='ranking-list'>
+      <view class='your-ranking'>你的位置</view>
+      <view class='ranking-item' wx:for="{{rankings}}" wx:key="index">{{item.userName}}:{{item.tapNum}}</view>
+    </view>
+  </view>
+</view>

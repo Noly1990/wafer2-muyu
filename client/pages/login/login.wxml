@@ -1,0 +1,4 @@
+<!--pages/login/login.wxml-->
+<view class='title'>
+  <text>微信登陆中...</text>
+</view>

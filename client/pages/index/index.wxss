@@ -1,0 +1,175 @@
+/**index.wxss**/
+
+page {
+  position: relative;
+}
+
+.auto-qiao {
+  width: 100rpx;
+  height:100rpx;
+  position: absolute;
+  left: 5%;
+  top: 20%;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.user-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  position: absolute;
+  border-radius: 50%;
+  left: 40rpx;
+  top: 40rpx;
+}
+
+.muyu-box {
+  padding-top: 50rpx;
+  position: relative;
+}
+
+.muyu-img {
+  display: block;
+  margin: 0 auto;
+  width: 320rpx;
+  height: 240rpx;
+}
+
+.muyu-out {
+  position: absolute;
+  display: block;
+  width: 160rpx;
+  height: 120rpx;
+  left: 50%;
+  opacity: 0.5;
+  top: 80rpx;
+  transform: translateX(-50%);
+  transition: 0.5 all linear;
+  z-index: -1;
+}
+
+.muyu-active {
+  animation: bigger .2s linear;
+}
+
+@keyframes bigger {
+  0% {
+    transform:translateX(-50%) scale(1);
+  }
+
+  50% {
+    transform:translateX(-50%) scale(2);
+  }
+
+  100% {
+    transform:translateX(-50%) scale(3);
+  }
+}
+
+.score-text {
+  display: block;
+  padding-top: 30rpx;
+  font-size: 30px;
+  text-align: center;
+}
+
+.fo-img {
+  padding-top: 90rpx;
+  display: block;
+  margin: 0 auto;
+  width: 580rpx;
+  height: 680rpx;
+}
+
+.music-btn {
+  padding: 5rpx;
+  border: 1px solid black;
+}
+
+.music-select {
+  display: block;
+  position: absolute;
+  top: 30rpx;
+  right: 50rpx;
+  font-size: 15px;
+}
+
+.music-item {
+  padding: 5rpx;
+  border: 1px solid black;
+}
+
+.music-active {
+  background-color: yellow;
+}
+
+.ranking-box {
+  width: 750rpx;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: all 0.5s linear;
+  z-index: 100;
+}
+
+.ranking-list {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.ranking-hidden {
+  bottom: -440rpx;
+  transition: all 0.5s linear;
+}
+
+.ranking-banner {
+  text-align: center;
+}
+
+.ranking-item {
+  height: 40rpx;
+}
+
+.light-img {
+  margin: 0 auto;
+  width: 680rpx;
+  height: 680rpx;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: -1;
+  opacity: 0.3;
+  transition: all 0.2s linear;
+}
+
+.light-active {
+  opacity: 0.8;
+}
+
+.words-box {
+  margin: 0 auto;
+  width: 450rpx;
+  height: 300rpx;
+  background-color: #eee;
+  overflow: hidden;
+}
+
+.words-window {
+  padding: 30rpx;
+  margin: 0 auto;
+  position: relative;
+  top: 0rpx;
+}
+
+.back-img {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: -20;
+}
