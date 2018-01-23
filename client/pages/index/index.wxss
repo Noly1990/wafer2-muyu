@@ -2,6 +2,8 @@
 
 page {
   position: relative;
+  margin: 0;
+  padding: 0;
 }
 
 .auto-qiao {
@@ -30,13 +32,14 @@ page {
 .muyu-box {
   padding-top: 50rpx;
   position: relative;
+  top: -80rpx;
 }
 
 .muyu-img {
   display: block;
   margin: 0 auto;
-  width: 320rpx;
-  height: 240rpx;
+  width: 380rpx;
+  height: 270rpx;
 }
 
 .muyu-out {
@@ -72,17 +75,23 @@ page {
 
 .score-text {
   display: block;
-  padding-top: 30rpx;
+  position: absolute;
+  background-color: rgba(255,255,255,.5);
+  padding: 10rpx 70rpx;
+  border-radius: 10rpx;
   font-size: 30px;
   text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 50%;
 }
 
 .fo-img {
-  padding-top: 90rpx;
+  padding-top: 100rpx;
   display: block;
   margin: 0 auto;
-  width: 580rpx;
-  height: 680rpx;
+  width: 680rpx;
+  height: 800rpx;
 }
 
 .music-btn {
@@ -138,8 +147,8 @@ page {
 
 .light-img {
   margin: 0 auto;
-  width: 680rpx;
-  height: 680rpx;
+  width: 760rpx;
+  height: 760rpx;
   position: absolute;
   left: 50%;
   transform: translate(-50%);

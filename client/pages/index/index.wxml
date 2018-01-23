@@ -20,7 +20,6 @@
       <text>{{tapNum}}</text>
     </view>
     <view class='muyu-box'>
-
       <image bindtap="qiao" class="muyu-img" src="./muyu-s.png"></image>
       <image class='muyu-out {{isMuyuActive?"muyu-active":""}}' src="./muyu.png"> src="./muyu.png"></image>
     </view>
