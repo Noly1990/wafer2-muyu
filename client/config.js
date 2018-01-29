@@ -4,8 +4,11 @@
 
 // 此处主机域名修改成腾讯云解决方案分配的域名
 // var host = '59431301.qcloud.la';
-
-var host = 'xjvsbdcx.qcloud.la';
+//dckeayxo.qcloud.la
+//测试环境
+var host = 'dckeayxo.qcloud.la';
+//生产环境
+// var host = '556351447.lxxiyou.cn';
 
 var config = {
 
@@ -30,6 +33,9 @@ var config = {
 
         //获得排行榜信息
         getRankingUrl: `https://${host}/weapp/getRanking`,
+
+        //抽奖api
+        lottoUrl: `https://${host}/weapp/lotto`
     }
 };
 

@@ -12,7 +12,6 @@ App({
     // 调用登录接口
 
   },
-
   globalData: {
     userInfo: null
   }

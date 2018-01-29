@@ -31,6 +31,7 @@ CREATE TABLE `cSessionInfo` (
   `user_info` varchar(2048) COLLATE utf8mb4_unicode_ci NOT NULL,
   `weekscore` int(10) DEFAULT 0 NOT NULL,
   `totalscore` int(15) DEFAULT 0 NOT NULL,
+  `bonus` int(15) DEFAULT 0 NOT NULL,
   PRIMARY KEY (`open_id`),
   KEY `openid` (`open_id`) USING BTREE,
   KEY `skey` (`skey`) USING BTREE

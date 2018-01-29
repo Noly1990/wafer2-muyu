@@ -5,87 +5,96 @@ var config = require('../../config');
 
 
 const app = getApp()
-var timeOut,interval,autoInterval;
+var timeOut, interval, autoInterval;
 Page({
   data: {
-    autoImgUrl:'./begin.png',
+    autoImgUrl: './begin.png',
     userInfo: {},
     hasUserInfo: false,
     isPlay: false,
+    //抽奖基数
+    baseNum: 1,
+    //木鱼敲击数
     tapNum: 0,
-    isCheck: false,
+    //音乐列表展开与否
     isMusic: false,
-    isHidden:true,
-    isLight:false,
-    isAutiQiao:false,
-    top:0,
-    musicSelect:0,
-    musics: [{
-      musicName: 'Panama',
-      musicSrc: 'http://111.231.143.94/music/panama.mp3',
-      musivAuthor: 'Matteo',
-      musicIndex: 0
-    }, {
-      musicName: '六字大明咒',
-      musicSrc: 'http://122.228.254.11/mp3.9ku.com/hot/2010/05-27/301973.mp3',
-      musivAuthor: '佛教音乐',
-      musicIndex: 1
-    }, {
-      musicName: '大悲咒',
-      musicSrc: 'http://122.228.254.11/mp3.9ku.com/m4a/547320.m4a',
-      musivAuthor: '佛教音乐',
-      musicIndex: 2
-    }],
-    rankings:[
+    //排行榜展开与否
+    isHidden: true,
+    //fo发光
+    isLight: false,
+    //自动敲
+    isAutoQiao: false,
+    //木鱼动画
+    isMuyuActive: false,
+    isFoActive: false,
+    top: 0,
+    musicSelect: 0,
+    //http://mp3.qqmusic.cc/yq/204173169.mp3
+    //http://111.231.143.94/music/panama.mp3
+    musics: [
+      //｛musicName: 'Panama',
+      //   musicSrc: 'http://111.231.143.94/music/panama.mp3',
+      //   musivAuthor: 'Matteo',
+      //   musicIndex: 0
+      // },
       {
-        userName:'用户一',
-        userAvator:"url",
-        tapNum:5000
+        musicName: '大悲咒',
+        musicSrc: 'http://122.228.254.11/mp3.9ku.com/m4a/547320.m4a',
+        musivAuthor: '佛教音乐',
+        musicIndex: 2
       },
       {
-        userName: '用户二',
-        userAvator: "url",
-        tapNum: 4567
+        musicName: '六字大明咒',
+        musicSrc: 'http://122.228.254.11/mp3.9ku.com/hot/2010/05-27/301973.mp3',
+        musivAuthor: '佛教音乐',
+        musicIndex: 1
+      }, {
+        musicName: '消灾吉祥神咒',
+        musicSrc: 'http://122.228.254.11/mp3.9ku.com/hot/2010/05-27/301978.mp3',
+        musivAuthor: '佛教音乐',
+        musicIndex: 3
+      }
+    ],
+    rankings: [
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
       },
       {
-        userName: '用户三',
-        userAvator: "url",
-        tapNum: 2522
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
       },
       {
-        userName: '用户三',
-        userAvator: "url",
-        tapNum: 2522
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
       },
       {
-        userName: '用户三',
-        userAvator: "url",
-        tapNum: 2522
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
       },
       {
-        userName: '用户三',
-        userAvator: "url",
-        tapNum: 2522
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
       },
       {
-        userName: '用户三',
-        userAvator: "url",
-        tapNum: 2522
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
       },
       {
-        userName: '用户三',
-        userAvator: "url",
-        tapNum: 2522
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
       },
       {
-        userName: '用户三',
-        userAvator: "url",
-        tapNum: 2522
-      },
-      {
-        userName: '用户三',
-        userAvator: "url",
-        tapNum: 2522
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
       }
     ]
   },
@@ -97,19 +106,21 @@ Page({
 
     this.setData({
       tapNum: this.data.tapNum + 1,
-      isCheck: true,
-      isLight:true,
-      isMuyuActive:true
+      isLight: true,
+      isMuyuActive: true
     });
 
+    this.checkLotto()
+
     var that = this;
-    setTimeout(function(){
+    setTimeout(function () {
       that.setData({
         isLight: false,
-        isMuyuActive:false
+        isMuyuActive: false
       });
 
-    },200);
+    }, 300);
+
     if (this.data.isPlay == false) {
       clearInterval(interval);
       interval = setInterval(function () {
@@ -126,10 +137,12 @@ Page({
         that.audioCtx.pause();
         that.audioCtx.seek(5);
         clearInterval(interval);
-        that.setData({
-          top:0,
-        });
         that.upLoadScore();
+        that.setData({
+          top: 0,
+          tapNum: 0,
+          baseNum: 1
+        });
       }, 800);
     }
   },
@@ -140,7 +153,7 @@ Page({
     });
   },
   //切换音乐部分
-  changeMusic:function(event){
+  changeMusic: function (event) {
     console.log(event);
     this.setData({
       isMusic: !this.data.isMusic
@@ -149,51 +162,58 @@ Page({
     this.setData({
       musicSelect: index
     });
-    this.audioCtx.src=this.data.musics[index].musicSrc;
+    this.audioCtx.src = this.data.musics[index].musicSrc;
     this.audioCtx.seek(5);
     console.log('音乐已切换为:' + this.data.musics[index].musicName)
   },
 
-  autoQiao(){
+  autoQiao() {
     if (!this.data.isAutoQiao) {
       this.setData({
-        isAutoQiao:true,
-        autoImgUrl:'./stop.png'
+        isAutoQiao: true,
+        autoImgUrl: './stop.png'
       });
       autoInterval = setInterval(function () {
         this.qiao();
-      }.bind(this), 500);
-    }else {
+      }.bind(this), 700);
+    } else {
       this.setData({
         isAutoQiao: false,
-        autoImgUrl:'./begin.png'
+        autoImgUrl: './begin.png'
       });
       clearInterval(autoInterval);
     }
   },
 
   //排行榜toggle切换
-  upToggle:function(){
-    console.log('tapUp');
-    this.getRanking()
-    this.setData({
-      isHidden:!this.data.isHidden,
-    });
+  upToggle: function () {
+    if (this.data.isHidden) {
+      wx.showLoading({
+        title: '加载中'
+      })
+      this.getRanking()
+    } else {
+      this.setData({
+        isHidden: !this.data.isHidden,
+      });
+    }
   },
 
   onReady: function (e) {
+
     this.audioCtx = wx.createInnerAudioContext();
     this.audioCtx.src = this.data.musics[this.data.musicSelect].musicSrc;
+    this.audioCtx.obeyMuteSwitch = false;
     this.audioCtx.seek(5);
     // 使用 wx.createInnerAudioContext 获取 audio 上下文 context
     this.audioCtx1 = wx.createInnerAudioContext();
-    this.audioCtx1.src = '/musics/muyu1.mp3';
+    this.audioCtx1.src = 'musics/muyu1.mp3';
   },
 
 
   onLoad: function () {
 
-    let avatarUrl=wx.getStorageSync('avatarUrl');
+    let avatarUrl = wx.getStorageSync('avatarUrl');
     this.setData({
       avatarUrl
     });
@@ -212,6 +232,7 @@ Page({
     qcloud.request(options);
   },
 
+
   getUserInfo: function (e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
@@ -220,7 +241,8 @@ Page({
       hasUserInfo: true
     })
   },
-  getRanking(){
+  getRanking() {
+    var that = this;
     var options = {
       url: config.service.getRankingUrl,
       login: true,
@@ -229,15 +251,32 @@ Page({
         "Content-Type": "application/json"
       },
       success(res) {
+
         console.log('ranking res:', res);
+        wx.hideLoading()
+
+        let oldArr = that.data.rankings;
+        let formatArr = formatRankingLists(res.data.rankingLists);
+        for (let j = 0; j < formatArr.length; j++) {
+          oldArr[j] = formatArr[j];
+        }
+        that.setData({
+          isHidden: !that.data.isHidden,
+          rankings: oldArr
+        });
       },
       fail(error) {
+        wx.showToast({
+          title: '抱歉，网络有一点小问题',
+          icon: 'none',
+          duration: 2000
+        })
         console.log('request fail', error);
       }
     }
     qcloud.request(options);
   },
-  upLoadScore(){
+  upLoadScore() {
     let score = this.data.tapNum;
     var options = {
       url: config.service.upLoadScoreUrl,
@@ -248,7 +287,7 @@ Page({
       },
       dataType: 'json',
       data: {
-        status:'upScore',
+        status: 'upScore',
         addScore: score
       },
       success(res) {
@@ -276,5 +315,56 @@ Page({
         // 转发失败
       }
     }
+  },
+  checkLotto() {
+    if (this.data.tapNum / 5 > this.data.baseNum) {
+      let isAuto = this.data.isAutoQiao;
+      let baseNum = this.data.baseNum;
+      var options = {
+        url: config.service.lottoUrl,
+        login: true,
+        method: 'POST',
+        header: {
+          "Content-Type": "application/json"
+        },
+        dataType: 'json',
+        data: {
+          isAuto: isAuto,
+          lottoBase: baseNum
+        },
+        success(res) {
+          console.log('res:', res);
+        },
+        fail(error) {
+          console.log('request fail', error);
+        }
+      }
+      qcloud.request(options);
+
+      let newBaseNum = baseNum + 1;
+      this.setData({
+        baseNum: newBaseNum
+      })
+    }
   }
+
 })
+
+
+// userName: '等你来',
+// userAvator: './avatar-temp.jpg',
+// tapNum: 0
+
+function formatRankingLists(rankingLists) {
+  let newLists = [];
+  let length = rankingLists.length > 8 ? 8 : rankingLists.length;
+  for (let i = 0; i < length; i++) {
+    let tempItem = {};
+    tempItem.userName = rankingLists[i].userInfo.nickName;
+    tempItem.userAvator = rankingLists[i].userInfo.avatarUrl;
+    tempItem.tapNum = rankingLists[i].totalscore;
+    newLists.push(tempItem)
+  }
+  return newLists;
+}
+

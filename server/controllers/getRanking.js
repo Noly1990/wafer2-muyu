@@ -17,7 +17,9 @@ module.exports = async (ctx, next) => {
         newItem.totalscore=res[i].totalscore;
         newItem.userInfo=JSON.parse(res[i].user_info);
         delete newItem.userInfo.watermark
-        newRes.push(newItem)
+        if (newItem.userInfo.avatarUrl) {
+          newRes.push(newItem)
+        }     
     }
 
 

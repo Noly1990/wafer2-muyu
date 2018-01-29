@@ -3,10 +3,10 @@ const CONF = {
     rootPathname: '',
 
     // 微信小程序 App ID
-    appId: 'wxf41e21c7dac0f8fe',
+    appId: 'wx35801fc4c64962f4',
 
     // 微信小程序 App Secret
-    appSecret: '095a53be634311ffd39db4c394a81622',
+    appSecret: '1ac78e22d456f08ed90a0ef40f747f2f',
 
     // 是否使用腾讯云代理登录小程序
     useQcloudLogin: true,
@@ -15,13 +15,16 @@ const CONF = {
      * MySQL 配置，用来存储 session 和用户信息
      * 若使用了腾讯云微信小程序解决方案
      * 开发环境下，MySQL 的初始密码为您的微信小程序 appid
+     * 生产LP3CjxeLM3Wz9avE
      */
     mysql: {
-        host: 'localhost',
+      // host: '172.16.164.155',
+      host: 'localhost',
         port: 3306,
         user: 'root',
         db: 'cAuth',
-        pass: 'wxf41e21c7dac0f8fe',
+        // pass: 'LP3CjxeLM3Wz9avE',
+        pass:'wx35801fc4c64962f4',
         char: 'utf8mb4'
     },
 

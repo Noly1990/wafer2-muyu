@@ -39,6 +39,8 @@ router.post('/upLoadScore', validationMiddleware, controllers.upLoadScore)
 
 router.get('/getRanking', validationMiddleware, controllers.getRanking)
 
+router.post('/lotto', validationMiddleware, controllers.lotto)
+
 
 
 module.exports = router

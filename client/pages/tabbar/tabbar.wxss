@@ -1,0 +1,13 @@
+/* pages/tabbar/tabbar.wxss */
+.tabbar-box {
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.tabbar-item {
+  flex: 1;
+  text-align: center;
+}
