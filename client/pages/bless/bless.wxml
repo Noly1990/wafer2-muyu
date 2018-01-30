@@ -1,0 +1,12 @@
+<!--pages/bless/bless.wxml-->
+<view class='bless'>
+
+  <view class='coin-box'>
+    <image class='img-coin {{isSpin?"coin-spin":""}} {{isDrop?"coin-drop":""}}' src='./coin.png'></image>
+  </view>
+  <view class='bless-box'>
+    <image class='img-bottom' src='./gdx.png'></image>
+    <image class='img-top' src='./gdx-top.png'></image>
+  </view>
+  <button disabled='{{btnDisable}}' bindtap='dropCoin'>福源祈福</button>
+</view>

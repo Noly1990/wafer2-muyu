@@ -1,0 +1,71 @@
+/* pages/bless/bless.wxss */
+
+page {
+  background-color: orange;
+}
+
+.bless-box {
+  width: 100%;
+  margin-top: 200rpx;
+  position: relative;
+  height: 600rpx;
+}
+
+.coin-box {
+  width: 150rpx;
+  height: 150rpx;
+  margin: 0 auto;
+  position: relative;
+}
+
+.img-coin {
+  width: 150rpx;
+  height: 150rpx;
+  position: absolute;
+  z-index: 15;
+  top: 0;
+  opacity: 0;
+}
+.coin-spin {
+  opacity: 1;
+  animation: spin .6s linear;
+  animation-iteration-count:3;
+}
+.coin-drop {
+  animation: drop 1s ease-in;
+  animation-fill-mode:forwards;
+}
+ @keyframes spin {
+0% {
+transform: rotateY(0deg)
+}
+100% {
+transform: rotateY(360deg)
+}
+}
+ @keyframes drop {
+0% {
+top: 0;
+}
+100% {
+top: 550rpx;
+}
+}
+
+.img-bottom {
+  width: 600rpx;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-51%);
+  z-index: 10;
+}
+
+.img-top {
+  width: 600rpx;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-51%);
+  z-index: 20;
+}

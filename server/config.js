@@ -39,7 +39,7 @@ const CONF = {
         // 文件夹
         uploadFolder: ''
     },
-
+    
     // 微信登录态有效期
     wxLoginExpires: 7200,
     wxMessageToken: 'abcdefgh'

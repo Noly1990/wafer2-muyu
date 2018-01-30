@@ -35,7 +35,10 @@ var config = {
         getRankingUrl: `https://${host}/weapp/getRanking`,
 
         //抽奖api
-        lottoUrl: `https://${host}/weapp/lotto`
+        lottoUrl: `https://${host}/weapp/lotto`,
+
+        //获取用户bonus
+        getUserBonusUrl: `https://${host}/weapp/getUserBonus`
     }
 };
 

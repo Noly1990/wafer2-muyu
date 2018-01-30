@@ -47,8 +47,27 @@ async function updateUserScore(openId, score) {
   })
 }
 
+//获取用户bonus信息
+async function getUserBonus(openId) {
+  return new Promise(function (resovle, reject) {
+    mysql('cAuth').table('cSessionInfo').select('bonus').where('open_id', openId).then(res => {
+      resovle(res[0].bonus);
+    }, err => {
+      reject(err)
+    })
+  })
+}
 
-
+//更新用户bonus数据
+async function updateUserBonus(openId, bonus) {
+  return new Promise(function (resovle, reject) {
+    mysql('cAuth').table('cSessionInfo').where('open_id', openId).update('bonus', bonus).then(res => {
+      resovle(res);
+    }, err => {
+      reject(err)
+    })
+  })
+}
 
 
 
@@ -57,5 +76,7 @@ module.exports = {
   getUserStatus,
   updateUserScore,
   getUserScore,
-  getRankingLists
+  getRankingLists,
+  getUserBonus,
+  updateUserBonus
 }
