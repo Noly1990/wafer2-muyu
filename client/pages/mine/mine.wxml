@@ -1,2 +1,7 @@
 <!--pages/mine/mine.wxml-->
+<view>
+
 <text>pages/mine/mine.wxml</text>
+<tabbar active="3"></tabbar>
+</view>
+

@@ -1,6 +1,4 @@
 /**index.wxss**/
-@import "../tabbar/tabbar.wxss";
-
 page {
   position: relative;
   margin: 0;
@@ -32,7 +30,7 @@ page {
 
 .muyu-box {
   position: relative;
-  top: -80rpx;
+  top: -120rpx;
 }
 
 .muyu-img {
@@ -143,57 +141,6 @@ page {
 .music-active {
   background-color: orange;
   border-radius: 10rpx;
-}
-
-.ranking-box {
-  width: 750rpx;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  background-color: rgba(247, 186, 129, 0.6);
-  transition: all 0.5s linear;
-  z-index: 100;
-}
-
-.ranking-list {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.ranking-hidden {
-  bottom: -375rpx;
-  transition: all 0.5s linear;
-}
-
-.ranking-banner {
-  text-align: center;
-  padding: 8rpx 0;
-}
-
-.ranking-item {
-  flex-basis: 25%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-}
-
-.ranking-content {
-  padding: 5px;
-}
-
-.ranking-avatar {
-  width: 80rpx;
-  height: 80rpx;
-}
-
-.ranking-name {
-  font-size: 0.8rem;
-}
-
-.ranking-score {
-  font-size: 0.8rem;
 }
 
 .light-img {

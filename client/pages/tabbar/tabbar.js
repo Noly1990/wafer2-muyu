@@ -1,66 +1,53 @@
-// pages/tabbar/tabbar.js
-Page({
-
+// pages/tabbatT/tabbar.js
+Component({
   /**
-   * 页面的初始数据
+   * 组件的属性列表
+   */
+  properties: {
+    active: {
+      type: Number,  //0,1,2,3
+      value: '激活的项目'
+    }
+  },
+  /**
+   * 组件的初始数据
    */
   data: {
-  
+
   },
 
   /**
-   * 生命周期函数--监听页面加载
+   * 组件的方法列表
    */
-  onLoad: function (options) {
-  
-  },
+  methods: {
+    gotoIndex() {
+      if (this.properties.active != 0) {
+        wx.redirectTo({
+          url: '../index/index',
+        })
+      }
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+    },
+    gotoRanking() {
+      if (this.properties.active != 1) {
+        wx.redirectTo({
+          url: '../ranking/ranking',
+        })
+      }
+    },
+    gotoBless() {
+      if (this.properties.active != 2) {
+        wx.redirectTo({
+          url: '../bless/bless',
+        })
+      }
+    },
+    gotoMine() {
+      if (this.properties.active != 3) {
+        wx.redirectTo({
+          url: '../mine/mine',
+        })
+      }
+    }
   }
 })

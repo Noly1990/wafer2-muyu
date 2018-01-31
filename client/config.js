@@ -38,7 +38,10 @@ var config = {
         lottoUrl: `https://${host}/weapp/lotto`,
 
         //获取用户bonus
-        getUserBonusUrl: `https://${host}/weapp/getUserBonus`
+        getUserBonusUrl: `https://${host}/weapp/getUserBonus`,
+
+        //bless
+        blessUrl: `https://${host}/weapp/bless`,
     }
 };
 

@@ -1,11 +1,11 @@
 {
   "pages": [
-    "pages/bless/bless",
     "pages/login/login",
     "pages/index/index",
     "pages/mine/mine",
-    "pages/tabbar/tabbar"
-    
+    "pages/tabbar/tabbar",
+    "pages/bless/bless",
+    "pages/ranking/ranking"
   ],
   "window": {
     "backgroundTextStyle": "light",

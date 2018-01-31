@@ -18,8 +18,6 @@ Page({
     tapNum: 0,
     //音乐列表展开与否
     isMusic: false,
-    //排行榜展开与否
-    isHidden: true,
     //fo发光
     isLight: false,
     //自动敲
@@ -53,48 +51,6 @@ Page({
         musicSrc: 'http://122.228.254.11/mp3.9ku.com/hot/2010/05-27/301978.mp3',
         musivAuthor: '佛教音乐',
         musicIndex: 3
-      }
-    ],
-    rankings: [
-      {
-        userName: '等你来',
-        userAvator: './avatar-temp.jpg',
-        tapNum: 0
-      },
-      {
-        userName: '等你来',
-        userAvator: './avatar-temp.jpg',
-        tapNum: 0
-      },
-      {
-        userName: '等你来',
-        userAvator: './avatar-temp.jpg',
-        tapNum: 0
-      },
-      {
-        userName: '等你来',
-        userAvator: './avatar-temp.jpg',
-        tapNum: 0
-      },
-      {
-        userName: '等你来',
-        userAvator: './avatar-temp.jpg',
-        tapNum: 0
-      },
-      {
-        userName: '等你来',
-        userAvator: './avatar-temp.jpg',
-        tapNum: 0
-      },
-      {
-        userName: '等你来',
-        userAvator: './avatar-temp.jpg',
-        tapNum: 0
-      },
-      {
-        userName: '等你来',
-        userAvator: './avatar-temp.jpg',
-        tapNum: 0
       }
     ]
   },
@@ -185,19 +141,6 @@ Page({
     }
   },
 
-  //排行榜toggle切换
-  upToggle: function () {
-    if (this.data.isHidden) {
-      wx.showLoading({
-        title: '加载中'
-      })
-      this.getRanking()
-    } else {
-      this.setData({
-        isHidden: !this.data.isHidden,
-      });
-    }
-  },
 
   onReady: function (e) {
 
@@ -231,6 +174,16 @@ Page({
     }
     qcloud.request(options);
   },
+  /**
+ * 生命周期函数--监听页面卸载
+ */
+  onUnload: function () {
+    console.log('unload')
+    clearInterval(autoInterval);
+    this.setData({
+      isAutoQiao:false
+    });
+  },
 
 
   getUserInfo: function (e) {
@@ -241,41 +194,7 @@ Page({
       hasUserInfo: true
     })
   },
-  getRanking() {
-    var that = this;
-    var options = {
-      url: config.service.getRankingUrl,
-      login: true,
-      method: 'GET',
-      header: {
-        "Content-Type": "application/json"
-      },
-      success(res) {
-
-        console.log('ranking res:', res);
-        wx.hideLoading()
-
-        let oldArr = that.data.rankings;
-        let formatArr = formatRankingLists(res.data.rankingLists);
-        for (let j = 0; j < formatArr.length; j++) {
-          oldArr[j] = formatArr[j];
-        }
-        that.setData({
-          isHidden: !that.data.isHidden,
-          rankings: oldArr
-        });
-      },
-      fail(error) {
-        wx.showToast({
-          title: '抱歉，网络有一点小问题',
-          icon: 'none',
-          duration: 2000
-        })
-        console.log('request fail', error);
-      }
-    }
-    qcloud.request(options);
-  },
+  
   upLoadScore() {
     let score = this.data.tapNum;
     var options = {
@@ -351,20 +270,4 @@ Page({
 })
 
 
-// userName: '等你来',
-// userAvator: './avatar-temp.jpg',
-// tapNum: 0
-
-function formatRankingLists(rankingLists) {
-  let newLists = [];
-  let length = rankingLists.length > 8 ? 8 : rankingLists.length;
-  for (let i = 0; i < length; i++) {
-    let tempItem = {};
-    tempItem.userName = rankingLists[i].userInfo.nickName;
-    tempItem.userAvator = rankingLists[i].userInfo.avatarUrl;
-    tempItem.tapNum = rankingLists[i].totalscore;
-    newLists.push(tempItem)
-  }
-  return newLists;
-}
 

@@ -1,14 +1,14 @@
 /* pages/bless/bless.wxss */
 
 page {
-  background-color: orange;
+  background-color: #fff193;
 }
 
 .bless-box {
   width: 100%;
   margin-top: 200rpx;
   position: relative;
-  height: 600rpx;
+  height: 550rpx;
 }
 
 .coin-box {
@@ -68,4 +68,21 @@ top: 550rpx;
   left: 50%;
   transform: translateX(-51%);
   z-index: 20;
+}
+.bless-btn {
+  width: 300rpx;
+  background-color: orange;
+}
+
+.ps-text {
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.share-btn {
+  position: absolute;
+  width: 200rpx;
+  height: 80rpx;
+  top: 0;
+  right: 0;
 }

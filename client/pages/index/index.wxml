@@ -1,5 +1,3 @@
-<import src="../tabbar/tabbar.wxml"/>
-
 
 <!--index.wxml-->
 <view class="container">
@@ -29,19 +27,6 @@
     <view class='words-window' style='top:{{top}}rpx'>这是一段经文,他会不断不断滚动这是一段经文,他会不断不断滚动这是一段经文,他会不断不断滚动这是一段经文,他会不断不断滚动这是一段经文,他会不断不断滚动这是一段经文,他会不断不断滚动这是一段经文,他会不断不断滚动这是一段经文,他会不断不断滚动这是一段经文,他会不断不断滚动这是一段经文,他会不断不断滚动这是一段经文,他会不断不断滚动这是一段经文,他会不断不断滚动这是一段经文,他会不断不断滚动</view>
   </view> -->
 
-  <!-- <view class='ranking-box {{isHidden?"ranking-hidden":""}}'>
-    <view class='ranking-banner' bindtap='upToggle'>{{isHidden?'显示排行榜':'关闭排行榜'}}</view>
-    <view class='ranking-list'>
-      <view class='you-ranking'>
-      </view>
-      <view class='ranking-item' wx:for="{{rankings}}" wx:key="index">
-        <view class='ranking-content'>
-          <image class='ranking-avatar' src='{{item.userAvator}}'></image>
-          <view class='ranking-name'>{{item.userName.length>5?item.userName[0]+'...'+item.userName[item.userName.length-1]:item.userName}}</view>
-          <view class='ranking-score'>{{item.tapNum}}</view>
-        </view>
-      </view>
-    </view>
-  </view> -->
-  <template is="tabbar"></template>
+
+  <tabbar active="0"></tabbar>
 </view>

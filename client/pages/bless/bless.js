@@ -12,6 +12,7 @@ Page({
     isSpin: false,
     isDrop: false,
     btnDisable:false,
+    blessCheck:false,
     userBonus:0
   },
   /**
@@ -20,13 +21,14 @@ Page({
   onLoad: function (options) {
     this.audioCtx = wx.createInnerAudioContext();
     var that=this;
-    console.log(config.service.getUserBonusUrl)
     var options = {
       url: config.service.getUserBonusUrl,
       login: true,
       method: 'GET',
       success(res) {
-        // that.setData({});
+        that.setData({
+          userBonus:res.data.bonus
+        });
         console.log('用户Bonus请求成功', res)
       },
       fail(error) {
@@ -82,14 +84,15 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+      console.log('用户发起了分享')
   },
 
   dropCoin() {
 
     this.setData({
       isSpin: true,
-      btnDisable:true
+      btnDisable:true,
+      blessCheck: true
     })
     this.audioCtx.src = 'musics/blink.mp3';
     this.audioCtx.play()
@@ -107,6 +110,43 @@ Page({
         this.audioCtx.play()
       }.bind(this), 1000)
     }.bind(this), 2000)
+
+  },
+  bless(){
+    var that = this;
+    var options = {
+      url: config.service.blessUrl,
+      login: true,
+      method: 'GET',
+      success(res) {
+        that.setData({
+          blessCheck: false,
+          userBonus: that.data.userBonus - 10
+        })
+        console.log('bless请求成功', res)
+      },
+      fail(error) {
+        wx.showToast({
+          title: '抱歉，网络有一点小问题',
+          icon: 'none',
+          duration: 3000
+        })
+        that.setData({
+          blessCheck:true
+        })
+        console.log('bless请求失败', error);
+      }
+    }
+    qcloud.request(options);
+  },
+  beginBless(){
+    console.log('bless')
+    if (this.data.userBonus-10>=0) {
+      this.dropCoin();
+      this.bless();
+    }else {
+      console.log('抱歉，福缘不够请前往木鱼获取')
+    }
   }
 
 })

@@ -1,5 +1,4 @@
-// const { getUserStatus } = require('../dbs/index.js')
-
+const { getUserBonus } = require('../dbs/index.js')
 
 // 登录授权接口
 module.exports = async (ctx, next) => {
@@ -8,11 +7,12 @@ module.exports = async (ctx, next) => {
   // 具体查看：
   if (ctx.state.$wxInfo.loginState) {
     ctx.state.data = ctx.state.$wxInfo.userinfo
-
+    let openId=ctx.state.$wxInfo.userinfo.openId;
+    let userBonus=await getUserBonus(openId);
     ctx.body = {
-      bonus:10
+      bonus: userBonus
     }
-
-
+  } else {
+    ctx.state.code = -1
   }
 }

@@ -1,0 +1,21 @@
+<!--pages/ranking/ranking.wxml-->
+<view>
+  <view class='ranking-title'>
+    <image class='ranking-title-img' src='./gdb.png'></image>
+  </view>
+
+  <view class='ranking-box'>
+    <view class='ranking-list'>
+      <view class='ranking-item' wx:for="{{rankings}}" wx:key="index">
+        <view class='ranking-content'>
+          <view class='ranking-index'>{{index}}</view>
+          <image class='ranking-avatar' src='{{item.userAvator}}'></image>
+          <view class='ranking-name'>{{item.userName.length>5?item.userName[0]+item.userName[1]+'...'+item.userName[item.userName.length-1]:item.userName}}</view>
+          <view class='ranking-score'>{{item.tapNum}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <tabbar active="1"></tabbar>
+
+</view>

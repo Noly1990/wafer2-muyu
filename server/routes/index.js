@@ -41,7 +41,9 @@ router.get('/getRanking', validationMiddleware, controllers.getRanking)
 
 router.post('/lotto', validationMiddleware, controllers.lotto)
 
+//bless页面
 router.get('/getUserBonus', validationMiddleware, controllers.getUserBonus)
+router.get('/bless', validationMiddleware, controllers.bless)
 
 
 module.exports = router
