@@ -145,6 +145,11 @@ Page({
       this.dropCoin();
       this.bless();
     }else {
+      wx.showToast({
+        title: '抱歉，请前往首页祈得福缘，手动更易获得',
+        icon: 'none',
+        duration: 1500
+      })
       console.log('抱歉，福缘不够请前往木鱼获取')
     }
   }

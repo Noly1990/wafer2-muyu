@@ -16,8 +16,12 @@ module.exports = async (ctx, next) => {
     const lottoBase = parseInt(json.lottoBase, 10);
     let multiple = isAuto ? 1 : 3;
     multiple = multiple * lottoBase * 10 / 1000;
-    if (multiple > 0.75) {
-      multiple = 0.75;
+    if (multiple > 0.6) {
+      if (isAuto) {
+        multiple = 0.6*0.5;
+      }else {
+        multiple = 0.6;
+      }
     }
     let random = Math.random();
     if (random < multiple) {
