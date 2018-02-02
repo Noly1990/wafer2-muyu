@@ -6,7 +6,7 @@
 
   <view class='ranking-box'>
     <view class='ranking-list'>
-      <view class='ranking-item' wx:for="{{rankings}}" wx:key="index">
+      <view class='ranking-item' wx:for="{{rankings}}" wx:key="{{index}}">
         <view class='ranking-content'>
           <view class='ranking-index'>{{index}}</view>
           <image class='ranking-avatar' src='{{item.userAvator}}'></image>

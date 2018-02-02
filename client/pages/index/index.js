@@ -143,7 +143,10 @@ Page({
 
 
   onReady: function (e) {
-
+    let bonus=wx.getStorageSync('bonus');
+    this.setData({
+      bonus
+    })
     this.audioCtx = wx.createInnerAudioContext();
     this.audioCtx.src = this.data.musics[this.data.musicSelect].musicSrc;
     this.audioCtx.obeyMuteSwitch = false;
@@ -166,7 +169,15 @@ Page({
       login: true,
       method: 'GET',
       success(res) {
-        console.log('初始用户数据请求成功', res)
+        console.log('初始用户数据请求成功', res);
+        wx.setStorage({
+          key: 'totalScore',
+          data: res.data.userStatus.totalscore,
+        });
+        wx.setStorage({
+          key: 'bonus',
+          data: res.data.userStatus.bonus,
+        });
       },
       fail(error) {
         console.log('初始用户数据请求失败', error);
@@ -239,6 +250,7 @@ Page({
     if (this.data.tapNum / 5 > this.data.baseNum) {
       let isAuto = this.data.isAutoQiao;
       let baseNum = this.data.baseNum;
+      var that=this;
       var options = {
         url: config.service.lottoUrl,
         login: true,
@@ -253,6 +265,13 @@ Page({
         },
         success(res) {
           console.log('res:', res);
+          if (res.data.status==1) {
+            that.coinUp();
+            that.setData({
+              bonus:res.data.bonus
+            })
+          }
+
         },
         fail(error) {
           console.log('request fail', error);
@@ -265,6 +284,21 @@ Page({
         baseNum: newBaseNum
       })
     }
+  },
+
+  coinUp(){
+    console.log('coin add')
+    this.setData({
+      isFoActive:true,
+      coinAdded:true
+    })
+
+    setTimeout(function(){
+      this.setData({
+        isFoActive: false,
+        coinAdded:false
+      })
+    }.bind(this),1500);
   }
 
 })

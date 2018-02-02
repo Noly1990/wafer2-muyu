@@ -77,6 +77,8 @@ top: 550rpx;
 .ps-text {
   font-size: 0.8rem;
   text-align: center;
+  color: #666;
+  margin-top: 5rpx;
 }
 
 .share-btn {

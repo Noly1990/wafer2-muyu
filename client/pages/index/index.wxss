@@ -1,17 +1,18 @@
 /**index.wxss**/
+
 page {
   position: relative;
   margin: 0;
   padding: 0;
-  background-color: #cc010e; 
+  background-color: #cc010e;
 }
 
 .auto-qiao {
   width: 100rpx;
   height: 100rpx;
   position: absolute;
-  left: 5%;
-  top: 20%;
+  right: 5%;
+  top: 10%;
 }
 
 .container {
@@ -28,9 +29,35 @@ page {
   top: 40rpx;
 }
 
+.bonus-box {
+  position: absolute;
+  left: 40rpx;
+  top: 180rpx;
+  color: white;
+  font-size: .9rem;
+}
+
+.coin-icon {
+  width: 45rpx;
+  height: 45rpx;
+  vertical-align: middle;
+}
+
+
+.coin-add{
+  font-size: .8rem;
+  opacity: 0;
+  transition: all .6s linear;
+}
+
+.coin-add-active {
+  opacity: 1;
+}
+
 .muyu-box {
   position: relative;
   top: -120rpx;
+  transform: translateZ(100px);
 }
 
 .muyu-img {
@@ -75,7 +102,7 @@ page {
   font-size: 30px;
   text-align: center;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateZ(100px);
   top: 50%;
 }
 
@@ -88,7 +115,7 @@ page {
 }
 
 .fo-active {
-  animation: foShake .4s linear infinite;
+  animation: foShake 0.4s linear infinite;
 }
 
 @keyframes foShake {
@@ -180,3 +207,5 @@ page {
   height: 100vh;
   z-index: -20;
 }
+
+

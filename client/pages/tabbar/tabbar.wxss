@@ -9,6 +9,7 @@
   flex-direction: row;
   padding: 10rpx 0;
   text-align: center;
+  transform: translateZ(100px);
 }
 
 .tabbar-item {

@@ -1,7 +1,25 @@
 <!--pages/mine/mine.wxml-->
 <view>
-
-<text>pages/mine/mine.wxml</text>
-<tabbar active="3"></tabbar>
+  <view class='mine-header'></view>
+  <view class='user-info'>
+    <image class='user-avatar' src='{{avatarUrl}}'></image>
+    <text class='user-name'>{{nickName.length>6?nickName[0]+nickName[1]+'...'+nickName[nickName.length-1]:nickName}}</text>
+  </view>
+  <view class='detail'>
+    <view class='detail-item'>
+      <view class='detail-title'>祈福次数</view>
+      {{totalScore}}
+    </view>
+    <view class='detail-item'>
+      <view class='detail-title'>目前福缘</view>
+      {{bonus}}
+    </view>
+  </view>
+  <view class='my-bonus-title'>集福窗</view>
+  <view class='my-bonus-list'>
+    <view class='my-bonus-item {{muBonusItemActive[index]?"item-spin":""}}' wx:for='{{myBonusWords}}' wx:key='{{index}}' bindtap='itemTap' data-index='{{index}}'>
+      <view class='.my-bonus-text'>{{item}}</view>
+    </view>
+  </view>
+  <tabbar active="3"></tabbar>
 </view>
-

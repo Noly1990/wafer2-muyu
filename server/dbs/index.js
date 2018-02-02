@@ -13,10 +13,10 @@ async function getRankingLists() {
 }
 
 
-//获取用户基本状态'open_id', 'weekscore', 'totalscore'
+//获取用户基本状态'open_id', 'weekscore', 'totalscore', 'bonus'
 async function getUserStatus(openId) {
   return new Promise(function (resovle, reject) {
-    mysql('cAuth').table('cSessionInfo').select('open_id', 'weekscore', 'totalscore').where('open_id', openId).then(res => {
+    mysql('cAuth').table('cSessionInfo').select('open_id', 'weekscore', 'totalscore','bonus').where('open_id', openId).then(res => {
       resovle(res);
     }, err => {
       reject(err)

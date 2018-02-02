@@ -1,9 +1,12 @@
-
 <!--index.wxml-->
 <view class="container">
-   <image class='back-img' src='./back.jpg'></image> 
+<!-- <button bindtap='coinUp'>text coin</button> -->
+  <image class='back-img' src='./back.jpg'></image>
   <image class='user-avatar' src='{{avatarUrl}}'></image>
-
+  <view class='bonus-box'>
+    <image class='coin-icon' src='./coin.png'></image>
+    {{bonus}}<text class='coin-add {{coinAdded?"coin-add-active":""}}'>+10</text>
+  </view>
   <image class='auto-qiao' src='{{autoImgUrl}}' bindtap='autoQiao'>自动敲</image>
   <view class='music-select'>
     <image src='./music.png' class='music-btn' bindtap='showMusicList'></image>
@@ -26,7 +29,5 @@
   <!-- <view class='words-box'>
     <view class='words-window' style='top:{{top}}rpx'>这是一段经文,他会不断不断滚动这是一段经文,他会不断不断滚动这是一段经文,他会不断不断滚动这是一段经文,他会不断不断滚动这是一段经文,他会不断不断滚动这是一段经文,他会不断不断滚动这是一段经文,他会不断不断滚动这是一段经文,他会不断不断滚动这是一段经文,他会不断不断滚动这是一段经文,他会不断不断滚动这是一段经文,他会不断不断滚动这是一段经文,他会不断不断滚动这是一段经文,他会不断不断滚动</view>
   </view> -->
-
-
   <tabbar active="0"></tabbar>
 </view>
