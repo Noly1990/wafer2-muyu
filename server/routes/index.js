@@ -2,7 +2,7 @@
  * ajax 服务路由集合
  */
 const router = require('koa-router')({
-    prefix: '/weapp'
+  prefix: '/weapp'
 })
 const controllers = require('../controllers')
 
@@ -44,6 +44,13 @@ router.post('/lotto', validationMiddleware, controllers.lotto)
 //bless页面
 router.get('/getUserBonus', validationMiddleware, controllers.getUserBonus)
 router.get('/bless', validationMiddleware, controllers.bless)
+
+//mine页面的getCollections
+router.get('/getCollections', validationMiddleware, controllers.getCollections)
+
+//bless页面分享加分
+router.get('/doShare', validationMiddleware, controllers.doShare)
+
 
 
 module.exports = router

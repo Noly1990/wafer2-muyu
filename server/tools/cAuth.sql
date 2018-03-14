@@ -32,6 +32,7 @@ CREATE TABLE `cSessionInfo` (
   `weekscore` int(10) DEFAULT 0 NOT NULL,
   `totalscore` int(15) DEFAULT 0 NOT NULL,
   `bonus` int(15) DEFAULT 0 NOT NULL,
+  `shareStatus` int(5) DEFAULT 1 NOT NULL,
   PRIMARY KEY (`open_id`),
   KEY `openid` (`open_id`) USING BTREE,
   KEY `skey` (`skey`) USING BTREE

@@ -1,16 +1,25 @@
 <!--pages/bless/bless.wxml-->
 <view class='bless'>
-<view>{{userBonus}}</view>
-  <button class='share-btn' open-type="share">分享</button>
+  <view class='bonus-box'>
+    <image class='coin-icon' src='./coin.png'></image>
+    {{userBonus}}
+  </view>
+  <view class='share-box'>
+    <button class='share-btn' open-type="share">分 享</button>
+  </view>
   <view class='coin-box'>
     <image class='img-coin {{isSpin?"coin-spin":""}} {{isDrop?"coin-drop":""}}' src='./coin.png'></image>
+  </view>
+  <view class='bless-reward {{isReward?"reward-active":""}}'>
+    <image class='reward-img' src='./itemback.png'></image>
+    <view class='reward-text'>{{rewardText}}</view>
   </view>
   <view class='bless-box'>
     <image class='img-bottom' src='./gdx.png'></image>
     <image class='img-top' src='./gdx-top.png'></image>
   </view>
   <button class='bless-btn' disabled='{{btnDisable||blessCheck}}' bindtap='beginBless'>福缘祈福</button>
-  <view class='ps-text'>首次分享给好友获得50福缘</view>
-  <view class='ps-text'>分享给微信群获得100福缘</view>
+  <view class='ps-text'>敲击木鱼祈福随机获得福缘</view>
+  <view class='ps-text'>首次分享好友或群获得一定福缘</view>
   <tabbar active="2"></tabbar>
 </view>

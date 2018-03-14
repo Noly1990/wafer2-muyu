@@ -16,15 +16,16 @@ const CONF = {
      * 若使用了腾讯云微信小程序解决方案
      * 开发环境下，MySQL 的初始密码为您的微信小程序 appid
      * 生产LP3CjxeLM3Wz9avE
+     * Root123456
      */
     mysql: {
       // host: '172.16.164.155',
-      host: 'localhost',
+        host: 'localhost',
         port: 3306,
         user: 'root',
         db: 'cAuth',
         // pass: 'LP3CjxeLM3Wz9avE',
-        pass:'wx35801fc4c64962f4',
+        pass:'bw9Y0eaLAm67wxfJ',
         char: 'utf8mb4'
     },
 

@@ -46,27 +46,27 @@ Page({
         tapNum: 0
       },
       {
-        userName: '等你来1313131',
+        userName: '等你来',
         userAvator: './avatar-temp.jpg',
         tapNum: 0
       },
       {
-        userName: '等你来1313131',
+        userName: '等你来',
         userAvator: './avatar-temp.jpg',
         tapNum: 0
       },
       {
-        userName: '等你来1313131',
+        userName: '等你来',
         userAvator: './avatar-temp.jpg',
         tapNum: 0
       },
       {
-        userName: '等你来1313131',
+        userName: '等你来',
         userAvator: './avatar-temp.jpg',
         tapNum: 0
       },
       {
-        userName: '等你e21eq dad来13132w呜呜呜',
+        userName: '等你来',
         userAvator: './avatar-temp.jpg',
         tapNum: 0
       }

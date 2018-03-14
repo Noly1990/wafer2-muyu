@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="container">
-<!-- <button bindtap='coinUp'>text coin</button> -->
+ <!-- <button bindtap='coinUp'>text coin</button>  -->
   <image class='back-img' src='./back.jpg'></image>
   <image class='user-avatar' src='{{avatarUrl}}'></image>
   <view class='bonus-box'>

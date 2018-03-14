@@ -1,4 +1,6 @@
 <!--pages/login/login.wxml-->
 <view class='title'>
   <text>微信登陆中...</text>
+  <view class='ps'>如长时间无法登录</view>
+  <view class='ps'>请清理微信后台后再次尝试</view>
 </view>

@@ -11,28 +11,37 @@ Page({
   data: {
     isSpin: false,
     isDrop: false,
-    btnDisable:false,
-    blessCheck:false,
-    userBonus:0
+    btnDisable: false,
+    blessCheck: false,
+    userBonus: 0,
+    rewardText: ''
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showShareMenu({
+      withShareTicket: true
+    })
     this.audioCtx = wx.createInnerAudioContext();
-    var that=this;
+    var that = this;
     var options = {
       url: config.service.getUserBonusUrl,
       login: true,
       method: 'GET',
       success(res) {
         that.setData({
-          userBonus:res.data.bonus
+          userBonus: res.data.bonus
         });
         console.log('用户Bonus请求成功', res)
       },
       fail(error) {
         console.log('用户Bonus数据请求失败', error);
+        wx.showToast({
+          title: '抱歉，网络有一点小问题',
+          icon: 'none',
+          duration: 3000
+        })
       }
     }
     qcloud.request(options);
@@ -83,16 +92,59 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-      console.log('用户发起了分享')
+  onShareAppMessage: function (res) {
+    var that = this;
+    console.log('用户发起了分享');
+    return {
+      title: '新年祈福，心缘木鱼',
+      path: 'pages/index/index',
+      success: function (res) {
+        // 转发成功
+        console.log('分享成功的res', res);
+        var options = {
+          url: config.service.doShareUrl,
+          login: true,
+          method: 'GET',
+          success(res) {
+            console.log('doShare请求成功', res);
+            if (res.data.status>0) {
+              that.setData({
+                userBonus: res.data.recentBonus
+              });
+            }else {
+              wx.showToast({
+                title: res.data.errText,
+                icon: 'none',
+                duration: 3000
+              })
+            }
+          },
+          fail(error) {
+            wx.showToast({
+              title: '抱歉，网络有一点小问题',
+              icon: 'none',
+              duration: 3000
+            })
+            console.log('doShare请求失败', error);
+          }
+        }
+        qcloud.request(options);
+
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
+
   },
 
   dropCoin() {
 
     this.setData({
       isSpin: true,
-      btnDisable:true,
-      blessCheck: true
+      btnDisable: true,
+      blessCheck: true,
+      isReward: false
     })
     this.audioCtx.src = 'musics/blink.mp3';
     this.audioCtx.play()
@@ -104,15 +156,20 @@ Page({
         this.setData({
           isDrop: false,
           isSpin: false,
-          btnDisable: false
+          isReward: true
         })
         this.audioCtx.src = 'musics/coin.mp3';
         this.audioCtx.play()
+        setTimeout(function () {
+          this.setData({
+            btnDisable: false
+          })
+        }.bind(this), 2000)
       }.bind(this), 1000)
     }.bind(this), 2000)
 
   },
-  bless(){
+  bless() {
     var that = this;
     var options = {
       url: config.service.blessUrl,
@@ -121,9 +178,11 @@ Page({
       success(res) {
         that.setData({
           blessCheck: false,
-          userBonus: that.data.userBonus - 10
+          coinAdded: true,
+          userBonus: that.data.userBonus - 10,
+          rewardText: res.data.newBless
         })
-        console.log('bless请求成功', res)
+        console.log('bless请求成功', res.data.newBless);
       },
       fail(error) {
         wx.showToast({
@@ -132,19 +191,19 @@ Page({
           duration: 3000
         })
         that.setData({
-          blessCheck:true
+          blessCheck: true
         })
         console.log('bless请求失败', error);
       }
     }
     qcloud.request(options);
   },
-  beginBless(){
+  beginBless() {
     console.log('bless')
-    if (this.data.userBonus-10>=0) {
+    if (this.data.userBonus - 10 >= 0) {
       this.dropCoin();
       this.bless();
-    }else {
+    } else {
       wx.showToast({
         title: '抱歉，请前往首页祈得福缘，手动更易获得',
         icon: 'none',

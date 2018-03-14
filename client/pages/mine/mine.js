@@ -1,4 +1,7 @@
 // pages/mine/mine.js
+var qcloud = require('../../vendor/wafer2-client-sdk/index.js')
+var config = require('../../config');
+
 Page({
 
   /**
@@ -16,14 +19,36 @@ Page({
     let nickName = wx.getStorageSync('nickName');
     let totalScore = wx.getStorageSync('totalScore');
     let bonus = wx.getStorageSync('bonus');
+
     this.setData({
       avatarUrl,
       nickName,
       totalScore,
       bonus,
-      myBonusWords: ['鸿运当头', '鱼跃龙门', '鹏程万里', '鱼跃龙门', '鹏程万里', '鱼跃龙门', '鹏程万里', '鱼跃龙门', '鹏程万里', '鱼跃龙门', '鹏程万里', '鱼跃龙门', '鹏程万里', '鱼跃龙门', '鹏程万里', '鱼跃龙门', '鹏程万里'],
+      myBonusWords: [],
       muBonusItemActive:[]
     })
+
+      var that=this;
+    var options = {
+      url: config.service.getCollectionsUrl,
+      login: true,
+      method: 'GET',
+      success(res) {
+        let collections=JSON.parse(res.data.collections).collection
+        console.log(collections);
+        that.setData({
+          myBonusWords:collections,
+          collectionsNum: collections.length
+        })
+      },
+      fail(error) {
+        console.log('mine页面获得数据失败', error);
+      }
+    }
+    qcloud.request(options);
+
+
   }, 
   itemTap(e){
     let index = e.currentTarget.dataset.index;

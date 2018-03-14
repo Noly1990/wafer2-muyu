@@ -14,15 +14,10 @@ module.exports = async (ctx, next) => {
     const json = ctx.request.body;
     const isAuto = json.isAuto;
     const lottoBase = parseInt(json.lottoBase, 10);
-    let multiple = isAuto ? 1 : 3;
-    multiple = multiple * lottoBase * 10 / 1000;
-    if (multiple > 0.6) {
-      if (isAuto) {
-        multiple = 0.6*0.5;
-      }else {
-        multiple = 0.6;
-      }
-    }
+    let multiple = lottoBase * 10 / 2000;
+    multiple=multiple>=0.15?0.15:multiple;
+    multiple=multiple*(isAuto?1:2);
+    console.log(multiple);
     let random = Math.random();
     if (random < multiple) {
       let oldBonus = await getUserBonus(openId);

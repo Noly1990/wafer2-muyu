@@ -15,7 +15,7 @@
       {{bonus}}
     </view>
   </view>
-  <view class='my-bonus-title'>集福窗</view>
+  <view class='my-bonus-title'>集福窗（{{collectionsNum}}/25）</view>
   <view class='my-bonus-list'>
     <view class='my-bonus-item {{muBonusItemActive[index]?"item-spin":""}}' wx:for='{{myBonusWords}}' wx:key='{{index}}' bindtap='itemTap' data-index='{{index}}'>
       <view class='.my-bonus-text'>{{item}}</view>

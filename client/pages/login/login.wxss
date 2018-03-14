@@ -4,3 +4,7 @@
   text-align: center;
   margin-top: 100rpx;
 }
+.ps {
+  margin-top: 30rpx;
+  font-size: .7rem;
+}

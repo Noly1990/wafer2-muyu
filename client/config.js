@@ -42,6 +42,12 @@ var config = {
 
         //bless
         blessUrl: `https://${host}/weapp/bless`,
+
+        //获取集福collections
+        getCollectionsUrl: `https://${host}/weapp/getCollections`,
+
+        //用户分享加分url
+        doShareUrl: `https://${host}/weapp/doShare`
     }
 };
 

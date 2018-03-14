@@ -16,7 +16,7 @@ async function getRankingLists() {
 //获取用户基本状态'open_id', 'weekscore', 'totalscore', 'bonus'
 async function getUserStatus(openId) {
   return new Promise(function (resovle, reject) {
-    mysql('cAuth').table('cSessionInfo').select('open_id', 'weekscore', 'totalscore','bonus').where('open_id', openId).then(res => {
+    mysql('cAuth').table('cSessionInfo').select('open_id', 'weekscore', 'totalscore', 'bonus').where('open_id', openId).then(res => {
       resovle(res);
     }, err => {
       reject(err)
@@ -69,7 +69,68 @@ async function updateUserBonus(openId, bonus) {
   })
 }
 
+//获得用户collections数据
+async function getUserCollections(openId) {
+  return new Promise(function (resovle, reject) {
+    mysql('cAuth').table('userCollections').select('collections').where('open_id', openId).then(res => {
+      resovle(res[0].collections);
+    }, err => {
+      reject(err)
+    })
+  })
+}
 
+//更新用户collections数据
+
+async function updateUserCollections(openId, collections) {
+  return new Promise(function (resovle, reject) {
+    mysql('cAuth').table('userCollections').where('open_id', openId).update('collections', collections).then(res => {
+      resovle(res);
+    }, err => {
+      reject(err)
+    })
+  })
+}
+
+async function initUserCollections(openId, collections) {
+  return new Promise(function (resovle, reject) {
+    mysql('cAuth').table('userCollections').insert({ open_id: openId, collections: collections }).then(res => {
+      resovle(res);
+    }, err => {
+      reject(err)
+    })
+  })
+}
+
+async function checkUserCollections(openId) {
+  return new Promise(function (resovle, reject) {
+    mysql('cAuth').table('userCollections').select('collections').where('open_id', openId).then(res => {
+      resovle(res);
+    }, err => {
+      reject(err)
+    })
+  })
+}
+
+async function checkUserShare(openId) {
+  return new Promise(function (resovle, reject) {
+    mysql('cAuth').table('cSessionInfo').select('shareStatus').where('open_id', openId).then(res => {
+      resovle(res[0].shareStatus);
+    }, err => {
+      reject(err)
+    })
+  })
+}
+
+async function setZeroUserShare(openId) {
+  return new Promise(function (resovle, reject) {
+    mysql('cAuth').table('cSessionInfo').where('open_id', openId).update('shareStatus', 0).then(res => {
+      resovle(res);
+    }, err => {
+      reject(err)
+    })
+  })
+}
 
 
 module.exports = {
@@ -78,5 +139,11 @@ module.exports = {
   getUserScore,
   getRankingLists,
   getUserBonus,
-  updateUserBonus
+  updateUserBonus,
+  getUserCollections,
+  updateUserCollections,
+  initUserCollections,
+  checkUserCollections,
+  checkUserShare,
+  setZeroUserShare
 }

@@ -1,4 +1,5 @@
-const { getUserBonus, updateUserBonus } = require('../dbs/index.js')
+const { getUserBonus, updateUserBonus, getUserCollections, updateUserCollections } = require('../dbs/index.js')
+const { generateBless, uniqueAdd } = require('../utils')
 
 // 登录授权接口
 module.exports = async (ctx, next) => {
@@ -9,18 +10,29 @@ module.exports = async (ctx, next) => {
     ctx.state.data = ctx.state.$wxInfo.userinfo
     let openId = ctx.state.$wxInfo.userinfo.openId;
     let userBonus = await getUserBonus(openId);
-
-    if (userBonus-10>=0) {
-      userBonus=userBonus-10;
-      await updateUserBonus(openId,userBonus);
-      ctx.body={
-        status:1,
-        recentBonus:userBonus
+    if (userBonus - 10 >= 0) {
+      userBonus = userBonus - 10;
+      await updateUserBonus(openId, userBonus);
+      let collectionsRes = await getUserCollections(openId);
+      let collections = JSON.parse(collectionsRes).collection;
+      let newBless = generateBless();
+      collections = uniqueAdd(newBless, collections);
+      let newCollections = {
+        "open_id": openId,
+        "count":collections.length,
+        collection: collections
       }
-    }else {
-      ctx.body={
-        status:-1,
-        errText:'您的福缘不够'
+      let updateRes = await updateUserCollections(openId, JSON.stringify(newCollections));
+      ctx.body = {
+        status: 1,
+        recentBonus: userBonus,
+        newBless
+      }
+
+    } else {
+      ctx.body = {
+        status: -1,
+        errText: '您的福缘不够'
       }
     }
 
