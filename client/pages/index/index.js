@@ -8,6 +8,7 @@ const app = getApp()
 var timeOut, interval, autoInterval;
 Page({
   data: {
+    centerText: "观自在菩萨，行深般若波罗蜜多时，照见五蕴皆空，度一切苦厄。舍利子，色不异空，空不异色，色即是空，空即是色。受想行识，亦复如是。舍利子，是诸法空相，不生不灭，不垢不净，不增不减，是故空中无色，无受想行识，无眼耳鼻舌身意，无色声香味触法，无眼界，乃至无意识界，无无明，亦无无明尽，乃至无老死，亦无老死尽 。无苦集灭道，无智亦无得，以无所得故。菩提萨埵，依般若波罗蜜多故，心无罣碍。无罣碍故，无有恐怖，远离颠倒梦想，究竟涅槃。三世诸佛，依般若波罗蜜多故，得阿耨多罗三藐三菩提。故知般若波罗蜜多，是大神咒，是大明咒，是无上咒，是无等等咒。能除一切苦，真实不虚。故说般若波罗蜜多咒。即说咒曰：揭谛揭谛，波罗揭谛，波罗僧揭谛，菩提萨婆诃。",
     autoImgUrl: './begin.png',
     userInfo: {},
     hasUserInfo: false,
@@ -75,7 +76,7 @@ Page({
         isMuyuActive: false
       });
 
-    }, 300);
+    }, 160);
 
     if (this.data.isPlay == false) {
       clearInterval(interval);
@@ -84,14 +85,16 @@ Page({
           top: that.data.top - 1
         });
       }, 50)
-
-      this.audioCtx.play();
+      //主音乐相关
+      // this.audioCtx.play();
 
       clearTimeout(timeOut)
 
       timeOut = setTimeout(function () {
-        that.audioCtx.pause();
-        that.audioCtx.seek(5);
+        //主音乐相关
+        // that.audioCtx.pause();
+        // that.audioCtx.seek(5);
+
         clearInterval(interval);
         that.upLoadScore();
         that.setData({
@@ -108,6 +111,7 @@ Page({
       isMusic: !this.data.isMusic
     });
   },
+
   //切换音乐部分
   changeMusic: function (event) {
     console.log(event);
@@ -118,10 +122,12 @@ Page({
     this.setData({
       musicSelect: index
     });
-    this.audioCtx.src = this.data.musics[index].musicSrc;
-    this.audioCtx.seek(5);
+    //主音乐相关
+    // this.audioCtx.src = this.data.musics[index].musicSrc;
+    // this.audioCtx.seek(5);
     console.log('音乐已切换为:' + this.data.musics[index].musicName)
   },
+
 
   autoQiao() {
     if (!this.data.isAutoQiao) {
@@ -143,15 +149,49 @@ Page({
 
 
   onReady: function (e) {
-    this.audioCtx = wx.createInnerAudioContext();
-    this.audioCtx.src = this.data.musics[this.data.musicSelect].musicSrc;
-    this.audioCtx.obeyMuteSwitch = false;
-    this.audioCtx.seek(5);
+    //主音乐相关
+    // this.audioCtx = wx.createInnerAudioContext();
+    // this.audioCtx.src = this.data.musics[this.data.musicSelect].musicSrc;
+    // this.audioCtx.obeyMuteSwitch = false;
+    // this.audioCtx.seek(5);
     // 使用 wx.createInnerAudioContext 获取 audio 上下文 context
     this.audioCtx1 = wx.createInnerAudioContext();
     this.audioCtx1.src = 'musics/muyu1.mp3';
-  },
 
+    var context = wx.createCanvasContext('firstCanvas')
+
+    var ctx=new Ctx(context);
+  
+    var indexindex=1;
+    var count=0;
+    var y=100;
+    var newArr;
+    var textArr = ['这是第些字', '这是第一行的一些字', '这是第一一行的一行的一些字', '这是第一行的一些字', '这是第一字', '这是第一行的一一行的一些字', '这是第一一些字', '这是第些字', '这是第一行的一些字', '这是第一一行的一行的一些字', '这是第一行的一些字', '这是第一字', '这是第一行的一一行的一些字', '这是第一一些字',]
+    console.log(totalLength(textArr))
+    newArr = textArr.slice(0, indexindex++);
+    ctx.strokeTextArr(textArr, '#ccc', 160, y, 30);
+    ctx.fillTextArr([], 'yellow', 160, y, 30);
+    ctx.draw()
+
+    setInterval(function(){
+      count++;
+      y-=0.35;
+      if ( count/120>1 ) {
+        console.log('do')
+        count-=120;
+        if (indexindex>textArr.length) {
+          y=180;
+          indexindex=1;
+        }
+        newArr = textArr.slice(0, indexindex++);
+      }
+      ctx.strokeTextArr(textArr, '#ccc', 160, y, 30);
+      ctx.fillTextArr(newArr, 'yellow', 160, y, 30);
+      ctx.draw()
+    },15);
+ 
+
+  },
 
   onLoad: function () {
       var that=this;
@@ -297,3 +337,48 @@ Page({
 
 
 
+class Ctx {
+  constructor(ctx){
+    this.ctx=ctx;
+    
+  }
+  fillText(text,color,x,y){
+    this.ctx.textAlign = 'center'
+    this.ctx.fillStyle=color;
+    this.ctx.setFontSize(18)
+    this.ctx.fillText(text,x,y);
+    this.ctx.fillStyle = 'black';
+  }
+  fillTextArr(textArr, color, x, y, height) {
+    textArr.forEach(function (item, index) {
+      this.fillText(item, color, x, y + index * height);
+    }.bind(this))
+  }
+  strokeText(text, color, x, y) {
+    this.ctx.textAlign = 'center'
+    this.ctx.strokeStyle = color;
+    this.ctx.setFontSize(18)
+    this.ctx.strokeText(text, x, y);
+    this.ctx.strokeStyle = 'black';
+  }
+  strokeTextArr(textArr,color,x,y,height) {
+    textArr.forEach(function(item,index){
+      this.strokeText(item,color,x,y+index*height);
+    }.bind(this))
+  }
+  draw(){
+    this.ctx.draw()
+  }
+}
+
+function convertTextArr(index,arr){
+  var tempIndex=index;
+  let aimArr=[];
+}
+
+function totalLength(textArr) {
+ let long=textArr.reduce(function(aim,item){
+    return aim+=item;
+  },'')
+  return long.length;
+}

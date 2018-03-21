@@ -17,6 +17,7 @@ page {
 
 .container {
   width: 100vw;
+  height: 100vh;
   position: relative;
 }
 
@@ -55,14 +56,14 @@ page {
 }
 
 .muyu-box {
-  position: relative;
-  top: -120rpx;
-  transform: translateZ(100px);
+  margin: 0 auto;
+  width: 380rpx;
+  height: 270rpx;
+  padding-top: 300rpx;
 }
 
 .muyu-img {
   display: block;
-  margin: 0 auto;
   width: 380rpx;
   height: 270rpx;
 }
@@ -103,19 +104,7 @@ page {
   text-align: center;
   left: 50%;
   transform: translateX(-50%) translateZ(100px);
-  top: 50%;
-}
-
-.fo-img {
-  padding-top: 100rpx;
-  display: block;
-  margin: 0 auto;
-  width: 680rpx;
-  height: 800rpx;
-}
-
-.fo-active {
-  animation: foShake 0.4s linear infinite;
+  bottom: 20%;
 }
 
 @keyframes foShake {
@@ -209,3 +198,8 @@ page {
 }
 
 
+.canvas-box {
+  width: 320px;
+  height: 200px;
+  margin: 0 auto;
+}
