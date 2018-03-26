@@ -1,5 +1,6 @@
 <!--pages/bless/bless.wxml-->
 <view class='bless'>
+<image class='back-img' src='/img/bg1.jpg'></image>
   <view class='bonus-box'>
     <image class='coin-icon' src='./coin.png'></image>
     {{userBonus}}
@@ -10,16 +11,16 @@
   <view class='coin-box'>
     <image class='img-coin {{isSpin?"coin-spin":""}} {{isDrop?"coin-drop":""}}' src='./coin.png'></image>
   </view>
+
   <view class='bless-reward {{isReward?"reward-active":""}}'>
     <image class='reward-img' src='./itemback.png'></image>
     <view class='reward-text'>{{rewardText}}</view>
   </view>
+  <button class='bless-btn' disabled='{{btnDisable||blessCheck}}' bindtap='beginBless'>福缘祈福</button>
   <view class='bless-box'>
     <image class='img-bottom' src='./gdx.png'></image>
-    <image class='img-top' src='./gdx-top.png'></image>
+    <image class='intro-img' src='./intro.png'></image>
   </view>
-  <button class='bless-btn' disabled='{{btnDisable||blessCheck}}' bindtap='beginBless'>福缘祈福</button>
-  <view class='ps-text'>敲击木鱼祈福随机获得福缘</view>
-  <view class='ps-text'>首次分享好友或群获得一定福缘</view>
+
   <tabbar active="2"></tabbar>
 </view>

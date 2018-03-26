@@ -1,7 +1,14 @@
 /* pages/bless/bless.wxss */
 
 page {
-  background-color: #fff193;
+  background-color: #d8b36d;
+}
+
+.back-img {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: -20;
 }
 
 .bonus-box {
@@ -48,12 +55,7 @@ page {
   vertical-align: middle;
 }
 
-.bless-box {
-  width: 100%;
-  margin-top: 240rpx;
-  position: relative;
-  height: 450rpx;
-}
+
 
 .coin-box {
   width: 120rpx;
@@ -102,25 +104,32 @@ page {
   }
 }
 
+.bless-box {
+  width: 100%;
+  margin-top: 380rpx;
+  position: relative;
+  height: 450rpx;
+}
+
 .img-bottom {
   width: 500rpx;
   height: 400rpx;
   position: absolute;
   top: 0;
   left: 50%;
-  transform: translateX(-51%);
-  z-index: 10;
+  transform: translateX(-50%);
+  z-index: 210;
 }
 
-.img-top {
-  width: 500rpx;
-  height: 400rpx;
-  position: absolute;
-  top: 0;
+.intro-img {
+  width: 300rpx;
+  height: 90rpx;
+  position: relative;
   left: 50%;
-  transform: translateX(-51%);
-  z-index: 20;
+  top: 380rpx;
+  transform: translateX(-50%);
 }
+
 
 .bless-btn {
   width: 250rpx;
@@ -129,12 +138,6 @@ page {
   background-color: orange;
 }
 
-.ps-text {
-  font-size: 0.7rem;
-  text-align: center;
-  color: #666;
-  margin-top: 10rpx;
-}
 
 .bless-reward {
   width: 200rpx;

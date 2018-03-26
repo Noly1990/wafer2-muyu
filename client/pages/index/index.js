@@ -5,7 +5,7 @@ var config = require('../../config');
 
 
 const app = getApp()
-var timeOut, interval, autoInterval;
+var timeOut, interval, autoInterval,textInterval;
 Page({
   data: {
     centerText: "观自在菩萨，行深般若波罗蜜多时，照见五蕴皆空，度一切苦厄。舍利子，色不异空，空不异色，色即是空，空即是色。受想行识，亦复如是。舍利子，是诸法空相，不生不灭，不垢不净，不增不减，是故空中无色，无受想行识，无眼耳鼻舌身意，无色声香味触法，无眼界，乃至无意识界，无无明，亦无无明尽，乃至无老死，亦无老死尽 。无苦集灭道，无智亦无得，以无所得故。菩提萨埵，依般若波罗蜜多故，心无罣碍。无罣碍故，无有恐怖，远离颠倒梦想，究竟涅槃。三世诸佛，依般若波罗蜜多故，得阿耨多罗三藐三菩提。故知般若波罗蜜多，是大神咒，是大明咒，是无上咒，是无等等咒。能除一切苦，真实不虚。故说般若波罗蜜多咒。即说咒曰：揭谛揭谛，波罗揭谛，波罗僧揭谛，菩提萨婆诃。",
@@ -125,7 +125,7 @@ Page({
     //主音乐相关
     // this.audioCtx.src = this.data.musics[index].musicSrc;
     // this.audioCtx.seek(5);
-    console.log('音乐已切换为:' + this.data.musics[index].musicName)
+    console.log('经文已切换为:' + this.data.musics[index].musicName)
   },
 
 
@@ -173,7 +173,7 @@ Page({
     ctx.fillTextArr([], 'yellow', 160, y, 30);
     ctx.draw()
 
-    setInterval(function(){
+    textInterval=setInterval(function(){
       count++;
       y-=0.35;
       if ( count/120>1 ) {
@@ -222,8 +222,9 @@ Page({
  * 生命周期函数--监听页面卸载
  */
   onUnload: function () {
-    console.log('unload')
+    console.log('主页unload')
     clearInterval(autoInterval);
+    clearInterval(textInterval);
     this.setData({
       isAutoQiao:false
     });
