@@ -69,7 +69,7 @@ page {
   height: 120rpx;
   position: absolute;
   z-index: 15;
-  top: 50rpx;
+  top: 150rpx;
   opacity: 0;
 }
 
@@ -96,11 +96,11 @@ page {
 
 @keyframes drop {
   0% {
-    top: 50rpx;
+    top: 150rpx;
   }
 
   100% {
-    top: 500rpx;
+    top: 600rpx;
   }
 }
 
