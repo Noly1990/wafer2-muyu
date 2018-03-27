@@ -3,17 +3,27 @@
   <image class='back-img' src='/img/bg1.jpg'></image>
   <image class='ranking-title-img' src='./gdb.png'></image>
 
-
   <view class='ranking-box'>
     <view class='ranking-list'>
-      <view class='ranking-item' wx:for="{{rankings}}" wx:key="{{index}}">
+
+      <view class='ranking-item {{index==localIndex?"my-item":""}}' wx:for="{{rankings}}" wx:key="{{index}}">
         <view class='ranking-content'>
-          <view class='ranking-index'>{{index}}</view>
+          <view class='ranking-index'>{{index+1}}</view>
           <image class='ranking-avatar' src='{{item.userAvator}}'></image>
-          <view class='ranking-name'>{{item.userName.length>5?item.userName[0]+item.userName[1]+'...'+item.userName[item.userName.length-1]:item.userName}}              </view>
+          <view class='ranking-name'>{{item.userName.length>5?item.userName[0]+item.userName[1]+'...'+item.userName[item.userName.length-1]:item.userName}} </view>
           <view class='ranking-score'>{{item.tapNum}}</view>
         </view>
       </view>
+
+      <view class='ranking-item'>
+        <view wx:if="{{localIndex==-1}}" class='ranking-content my-item'>
+          <view class='ranking-index'>***</view>
+          <image class='ranking-avatar' src='{{avatarUrl}}'></image>
+          <view class='ranking-name'>{{nickName.length>5?nickName[0]+nickName[1]+'...'+nickName[nickName.length-1]:nickName}} </view>
+          <view class='ranking-score'>{{myScore}}</view>
+        </view>
+      </view>
+
     </view>
   </view>
   <tabbar active="1"></tabbar>

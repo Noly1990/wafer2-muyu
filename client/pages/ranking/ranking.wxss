@@ -44,6 +44,13 @@ page {
   border-radius: 20rpx;
 }
 
+.my-item {
+  color: black;
+  background-color: rgba(244,240, 119, 0.78);
+  border: 1px solid red;
+  border-radius: 20rpx;
+}
+
 .ranking-item:last-of-type {
   margin-bottom: 30rpx;
 }
@@ -51,7 +58,7 @@ page {
 .ranking-content {
   display: flex;
   flex-direction: row;
-  padding: 20rpx;
+  padding: 12rpx;
   
 }
 .ranking-index {

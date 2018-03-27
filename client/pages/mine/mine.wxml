@@ -1,25 +1,41 @@
 <!--pages/mine/mine.wxml-->
 <view>
-  <view class='mine-header'></view>
+  <image class='back-img' src='/img/bg1.jpg'></image>
   <view class='user-info'>
     <image class='user-avatar' src='{{avatarUrl}}'></image>
     <text class='user-name'>{{nickName.length>6?nickName[0]+nickName[1]+'...'+nickName[nickName.length-1]:nickName}}</text>
   </view>
   <view class='detail'>
     <view class='detail-item'>
-      <view class='detail-title'>祈福次数</view>
+      <view class='detail-title'>
+        <image class='title-img' src='./qfcs.png'></image>
+      </view>
       {{totalScore}}
     </view>
     <view class='detail-item'>
-      <view class='detail-title'>目前福缘</view>
+      <view class='detail-title'>
+        <image class='title-img' src='./mqfy.png'></image>
+      </view>
       {{bonus}}
     </view>
   </view>
-  <view class='my-bonus-title'>集福窗（{{collectionsNum}}/25）</view>
-  <view class='my-bonus-list'>
-    <view class='my-bonus-item {{muBonusItemActive[index]?"item-spin":""}}' wx:for='{{myBonusWords}}' wx:key='{{index}}' bindtap='itemTap' data-index='{{index}}'>
-      <view class='.my-bonus-text'>{{item}}</view>
-    </view>
-  </view>
+
+
+  <view class='my-bonus-title'><image class='title-img' src='./jfc.png'></image>({{collectionsNum}}/25）</view>
+
+
+  <swiper class='swiper-box' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{myBonusWords}}" wx:key="index">
+      <swiper-item class="my-bonus-list">
+
+        <view class='my-bonus-item' wx:for='{{item}}' wx:key='{{index}}'>
+          <image class='item-img' src='./itemback.png' ></image>
+          <view class='.my-bonus-text'>{{item}}</view>
+        </view>
+
+      </swiper-item>
+    </block>
+  </swiper>
+
   <tabbar active="3"></tabbar>
 </view>

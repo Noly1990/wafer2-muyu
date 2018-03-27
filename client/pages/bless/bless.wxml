@@ -1,13 +1,16 @@
 <!--pages/bless/bless.wxml-->
 <view class='bless'>
 <image class='back-img' src='/img/bg1.jpg'></image>
+
+
   <view class='bonus-box'>
-    <image class='coin-icon' src='./coin.png'></image>
-    {{userBonus}}
+    <image class='bonus-img' src='./bonus-box.png'></image>
+    <text class='bonus-text'>{{userBonus}}</text>
   </view>
   <view class='share-box'>
-    <button class='share-btn' open-type="share">分 享</button>
+    <button class='share-btn' open-type="share"><image class='share-img' src='./share.png'></image></button>
   </view>
+
   <view class='coin-box'>
     <image class='img-coin {{isSpin?"coin-spin":""}} {{isDrop?"coin-drop":""}}' src='./coin.png'></image>
   </view>
@@ -16,7 +19,7 @@
     <image class='reward-img' src='./itemback.png'></image>
     <view class='reward-text'>{{rewardText}}</view>
   </view>
-  <button class='bless-btn' disabled='{{btnDisable||blessCheck}}' bindtap='beginBless'>福缘祈福</button>
+  <button class="{{btnDisable||blessCheck?'bless-btn-none':'bless-btn'}}" disabled='' bindtap='beginBless'><image class='btn-img' src='./bless-btn.png'></image></button>
   <view class='bless-box'>
     <image class='img-bottom' src='./gdx.png'></image>
     <image class='intro-img' src='./intro.png'></image>

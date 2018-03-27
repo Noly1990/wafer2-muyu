@@ -3,7 +3,6 @@
 var qcloud = require('../../vendor/wafer2-client-sdk/index.js')
 var config = require('../../config');
 
-
 Page({
   /**
    * 页面的初始数据
@@ -69,8 +68,201 @@ Page({
         userName: '等你来',
         userAvator: './avatar-temp.jpg',
         tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
+      },
+      {
+        userName: '等你来',
+        userAvator: './avatar-temp.jpg',
+        tapNum: 0
       }
-    ]
+    ],
+    localIndex: 2,
+    myScore: 200,
+    userName: '未上榜的玩家'
   },
   //获取排行数据
   getRanking() {
@@ -87,13 +279,30 @@ Page({
         console.log('ranking res:', res);
 
         let oldArr = that.data.rankings;
+
         let formatArr = formatRankingLists(res.data.rankingLists);
         for (let j = 0; j < formatArr.length; j++) {
           oldArr[j] = formatArr[j];
         }
+
+
+        let nickName = wx.getStorageSync('nickName');
+        let avatarUrl = wx.getStorageSync('avatarUrl');
+        let index = -1;
+        console.log('nick', nickName, formatArr)
+        console.log(formatArr.some(function (item) {
+          return item.userName === nickName
+        })
+        )
+
+
+
         that.setData({
-          rankings: oldArr
+          rankings: oldArr,
+          nickName,
+          avatarUrl
         });
+
       },
       fail(error) {
         wx.showToast({

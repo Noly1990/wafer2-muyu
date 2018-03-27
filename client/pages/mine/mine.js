@@ -3,14 +3,15 @@ var qcloud = require('../../vendor/wafer2-client-sdk/index.js')
 var config = require('../../config');
 
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-
+    indicatorDots: true,
+    autoplay: true,
+    interval: 3000,
+    duration: 800
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -35,10 +36,12 @@ Page({
       login: true,
       method: 'GET',
       success(res) {
+
         let collections=JSON.parse(res.data.collections).collection
-        console.log(collections);
+        console.log('collections',collections);
+        let result = convert2aim(collections);
         that.setData({
-          myBonusWords:collections,
+          myBonusWords: result,
           collectionsNum: collections.length
         })
       },
@@ -50,16 +53,6 @@ Page({
 
 
   }, 
-  itemTap(e){
-    let index = e.currentTarget.dataset.index;
-    let activeArr = this.data.muBonusItemActive;
-    activeArr[index]=true;
-    this.setData({
-      muBonusItemActive:activeArr
-    })
-    console.log(index)
-    
-  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -109,3 +102,11 @@ Page({
 
   }
 })
+
+function convert2aim(collection){
+  let result=[];
+  for (var i = 0, len = collection.length; i < len; i += 8) {
+    result.push(collection.slice(i, i +8));
+  }
+  return result;
+}

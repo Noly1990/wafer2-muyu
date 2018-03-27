@@ -3,7 +3,7 @@
 page {
   background-color: #d8b36d;
 }
-
+ 
 .back-img {
   position: absolute;
   width: 100vw;
@@ -13,48 +13,44 @@ page {
 
 .bonus-box {
   position: absolute;
-  top: 100rpx;
-  left: 0;
-  color: white;
-  font-size: 0.9rem;
-  background-color: orange;
-  padding: 20rpx 30rpx;
-  border-radius: 0 15rpx 15rpx 0;
-  width: 145rpx;
-  height: 50rpx;
+  top:75rpx;
+  left: 50rpx;
+}
+
+.bonus-img {
+  position: absolute;
+  width: 210rpx;
+  height: 75rpx;
+  z-index: -10;
+}
+.bonus-text {
+  font-weight: bold;
+  position: relative;
+  left: 85rpx;
+  top:15rpx;
 }
 
 .share-box {
   position: absolute;
-  top: 100rpx;
-  right: 0;
-  color: white;
-  background-color: orange;
-  border-radius: 15rpx 0 0 15rpx;
+  top: 70rpx;
+  right: 50rpx;
+}
+
+
+.share-img {
+  width: 85rpx;
+  height: 85rpx;
 }
 
 .share-btn {
-  display: block;
   background: none;
-  font-size: .9rem;
-  color: white;
-  line-height: 1;
-  width: 145rpx;
-  padding: 20rpx 30rpx;
-  height: 50rpx;
-  box-sizing: content-box;
+  padding: 0;
+  margin: 0;
 }
 
 .share-btn:after {
   border: none;
 }
-
-.coin-icon {
-  width: 45rpx;
-  height: 45rpx;
-  vertical-align: middle;
-}
-
 
 
 .coin-box {
@@ -136,6 +132,25 @@ page {
   height: 80rpx;
   font-size: 0.9rem;
   background-color: orange;
+  padding: 0;
+  position: relative;
+  top:320rpx;
+}
+
+.bless-btn-none {
+  width: 250rpx;
+  height: 80rpx;
+  font-size: 0.9rem;
+  background-color: orange;
+  padding: 0;
+  position: relative;
+  top:250rpx;
+  opacity: 0;
+}
+
+.btn-img {
+  width: 270rpx;
+  height:80rpx;
 }
 
 
@@ -143,7 +158,7 @@ page {
   width: 200rpx;
   height: 280rpx;
   position: absolute;
-  top: 50rpx;
+  top: 100rpx;
   left: 50%;
   transform: translateX(-50%);
   opacity: 0;
