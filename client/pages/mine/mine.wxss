@@ -15,7 +15,11 @@ page {
 
 .user-info {
   padding-top: 50rpx;
+  padding-bottom: 20rpx;
   text-align: center;
+  color: #984205;
+  font-size: 1.1rem;
+  font-weight: bold;
 }
 
 
@@ -36,10 +40,11 @@ page {
 }
 
 .detail-item {
-  font-size: 0.9rem;
+  font-size: 1rem;
   text-align: center;
   flex: 1;
   color: #984205;
+  font-weight: bold;
 }
 
 .detail-title {
@@ -53,7 +58,7 @@ page {
 
 .my-bonus-title {
   text-align: center;
-  color: #777;
+  color: #984205;
   width: 70%;
   margin: 0 auto;
   padding: 20rpx 0;
