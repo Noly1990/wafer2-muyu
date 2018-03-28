@@ -15,7 +15,7 @@ module.exports = async (ctx, next) => {
     if (shareRes) {
       let res1=await setZeroUserShare(openId);
       let oldBonus=await getUserBonus(openId);
-      let newBonus=oldBonus+100;
+      let newBonus=oldBonus+30;
       let res2=await updateUserBonus(openId,newBonus);
       ctx.body={
         status:1,

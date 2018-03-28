@@ -260,7 +260,7 @@ Page({
         tapNum: 0
       }
     ],
-    localIndex: 2,
+    localIndex: -1,
     myScore: 200,
     userName: '未上榜的玩家'
   },

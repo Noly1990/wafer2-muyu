@@ -6,6 +6,15 @@
   <view class='ranking-box'>
     <view class='ranking-list'>
 
+      <view class='ranking-item'>
+        <view wx:if="{{localIndex==-1}}" class='ranking-content my-item'>
+          <view class='ranking-index'>***</view>
+          <image class='ranking-avatar' src='{{avatarUrl}}'></image>
+          <view class='ranking-name'>{{nickName.length>5?nickName[0]+nickName[1]+'...'+nickName[nickName.length-1]:nickName}} </view>
+          <view class='ranking-score'>{{myScore}}</view>
+        </view>
+      </view>
+
       <view class='ranking-item {{index==localIndex?"my-item":""}}' wx:for="{{rankings}}" wx:key="{{index}}">
         <view class='ranking-content'>
           <view class='ranking-index'>{{index+1}}</view>
@@ -15,14 +24,7 @@
         </view>
       </view>
 
-      <view class='ranking-item'>
-        <view wx:if="{{localIndex==-1}}" class='ranking-content my-item'>
-          <view class='ranking-index'>***</view>
-          <image class='ranking-avatar' src='{{avatarUrl}}'></image>
-          <view class='ranking-name'>{{nickName.length>5?nickName[0]+nickName[1]+'...'+nickName[nickName.length-1]:nickName}} </view>
-          <view class='ranking-score'>{{myScore}}</view>
-        </view>
-      </view>
+
 
     </view>
   </view>

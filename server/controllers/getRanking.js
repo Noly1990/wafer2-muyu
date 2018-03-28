@@ -10,16 +10,22 @@ module.exports = async (ctx, next) => {
   if (ctx.state.$wxInfo.loginState) {
     ctx.state.data = ctx.state.$wxInfo.userinfo
 
+    let openId = ctx.state.$wxInfo.userinfo.openId;
+
     let res = await getRankingLists();
     let newRes=[];
     for (let i=0;i<res.length;i++) {
         let newItem={};
         newItem.totalscore=res[i].totalscore;
+        
         newItem.userInfo=JSON.parse(res[i].user_info);
+
         delete newItem.userInfo.watermark
+
         if (newItem.userInfo.avatarUrl) {
           newRes.push(newItem)
-        }     
+        }
+
     }
 
 
@@ -30,4 +36,9 @@ module.exports = async (ctx, next) => {
 
 
   }
+}
+
+
+function formatResData(){
+
 }
