@@ -4,7 +4,6 @@
   <image class='back-img' src='./back.jpg'></image>
   <image class='user-avatar' src='{{avatarUrl}}'></image>
 
-
   <view class='bonus-box'>
     <image class='bonus-img' src='./bonus-box.png'></image>
     <text class='bonus-text'>{{bonus}}</text>

@@ -291,12 +291,13 @@ Page({
         let avatarUrl = wx.getStorageSync('avatarUrl');
         let openId=wx.getStorageSync('openId')
         let index = -1;
+
         formatArr.forEach(function (item,i) {
           if (item.openId==openId) {
-            console.log(i)
              index=i;
           }
         })
+
         that.setData({
           rankings: oldArr,
           nickName,
