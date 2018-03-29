@@ -24,7 +24,7 @@ module.exports = async (ctx, next) => {
     }else {
       ctx.body = {
         status:-1,
-        errText:'对不起，您已不是首次分享'
+        errText:'对不起，您今日已分享'
       }
     }
   } else {

@@ -42,7 +42,8 @@ Page({
         let result = convert2aim(collections);
         that.setData({
           myBonusWords: result,
-          collectionsNum: collections.length
+          collectionsNum: collections.length,
+          total:res.data.allNum
         })
       },
       fail(error) {

@@ -1,5 +1,5 @@
 
-const { getRankingLists } = require('../dbs/index.js')
+const { getRankingLists, getUserStatus } = require('../dbs/index.js')
 
 
 // 登录授权接口
@@ -13,11 +13,13 @@ module.exports = async (ctx, next) => {
     let openId = ctx.state.$wxInfo.userinfo.openId;
 
     let res = await getRankingLists();
+    let userStatus=await getUserStatus(openId);
+
     let newRes=[];
     for (let i=0;i<res.length;i++) {
         let newItem={};
         newItem.totalscore=res[i].totalscore;
-        
+
         newItem.userInfo=JSON.parse(res[i].user_info);
 
         delete newItem.userInfo.watermark
@@ -31,7 +33,8 @@ module.exports = async (ctx, next) => {
 
     ctx.body = {
       statusCode:1,
-      rankingLists: newRes
+      rankingLists: newRes,
+      userStatus: userStatus[0]
     }
 
 

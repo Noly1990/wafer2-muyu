@@ -1,5 +1,9 @@
 const { getUserCollections } = require('../dbs/index.js')
 
+
+
+let allNum=25;
+
 // 登录授权接口
 module.exports = async (ctx, next) => {
   // 通过 Koa 中间件进行登录之后
@@ -11,7 +15,8 @@ module.exports = async (ctx, next) => {
     let userCollections = await getUserCollections(openId);
     ctx.body = {
       status:1,
-      collections: userCollections
+      collections: userCollections,
+      allNum
     }
   } else {
     ctx.state.code = -1

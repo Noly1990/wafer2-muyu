@@ -20,6 +20,7 @@ Page({
    */
   onLoad: function (options) {
     console.log('login')
+    initDeviceInfo();
     var that = this;
     qcloud.login({
       success(result) {
@@ -111,4 +112,10 @@ function saveUserInfo(userInfo) {
   wx.setStorageSync('nickName', userInfo.nickName)
   wx.setStorageSync('province', userInfo.province)
   wx.setStorageSync('openId', userInfo.openId)
+}
+
+
+function initDeviceInfo(){
+  console.log('system info', wx.getSystemInfoSync());
+  let systemInfo = wx.getSystemInfoSync();
 }

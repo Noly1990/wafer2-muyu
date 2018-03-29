@@ -58,7 +58,7 @@ page {
 .ranking-content {
   display: flex;
   flex-direction: row;
-  padding: 12rpx;
+  padding: 15rpx;
   
 }
 .ranking-index {
@@ -68,7 +68,7 @@ page {
 }
 .ranking-avatar {
     flex: 1;
-  width: 90rpx;
+  width: 80rpx;
   height: 90rpx;
 }
 

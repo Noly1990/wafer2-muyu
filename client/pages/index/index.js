@@ -5,10 +5,10 @@ var config = require('../../config');
 
 
 const app = getApp()
-var timeOut, interval, autoInterval,textInterval;
+var timeOut, interval, autoInterval, textInterval;
 Page({
   data: {
-    centerText: "观自在菩萨，行深般若波罗蜜多时，照见五蕴皆空，度一切苦厄。舍利子，色不异空，空不异色，色即是空，空即是色。受想行识，亦复如是。舍利子，是诸法空相，不生不灭，不垢不净，不增不减，是故空中无色，无受想行识，无眼耳鼻舌身意，无色声香味触法，无眼界，乃至无意识界，无无明，亦无无明尽，乃至无老死，亦无老死尽 。无苦集灭道，无智亦无得，以无所得故。菩提萨埵，依般若波罗蜜多故，心无罣碍。无罣碍故，无有恐怖，远离颠倒梦想，究竟涅槃。三世诸佛，依般若波罗蜜多故，得阿耨多罗三藐三菩提。故知般若波罗蜜多，是大神咒，是大明咒，是无上咒，是无等等咒。能除一切苦，真实不虚。故说般若波罗蜜多咒。即说咒曰：揭谛揭谛，波罗揭谛，波罗僧揭谛，菩提萨婆诃。",
+    centerText: ['这是第些字', '这是第一行的一些字', '这是第一一行的一行的一些字', '这是第一行的一些字', '这是第一字', '这是第一行的一一行的一些字', '这是第一一些字', '这是第些字', '这是第一行的一些字', '这是第一一行的一行的一些字', '这是第一行的一些字', '这是第一字', '这是第一行的一一行的一些字', '这是第一一些字',],
     autoImgUrl: './begin.png',
     userInfo: {},
     hasUserInfo: false,
@@ -17,6 +17,7 @@ Page({
     baseNum: 1,
     //木鱼敲击数
     tapNum: 0,
+    lastTapNum: 0,
     //音乐列表展开与否
     isMusic: false,
     //fo发光
@@ -26,7 +27,6 @@ Page({
     //木鱼动画
     isMuyuActive: false,
     isFoActive: false,
-    top: 0,
     musicSelect: 0,
     //http://mp3.qqmusic.cc/yq/204173169.mp3
     //http://111.231.143.94/music/panama.mp3
@@ -53,11 +53,29 @@ Page({
         musivAuthor: '佛教音乐',
         musicIndex: 3
       }
+    ],
+    textArr:[
+      {
+        textName:'观音心经',
+        textContent: ['这是观音心经第些字', '这是第一行的一些字', '这是第一一行的一行的一些字', '这是第一行的一些字', '这是第一字', '这是第一行的一一行的一些字', '这是第一一些字', '这是第观音心经些字', '这是第一行的一些字', '这是第一一行的一行的一些字', '这是第一行的一些字', '这是第一字', '这是第一行的一一行的一些字', '这是第一一些字',],
+        textStatus:'free'
+      },
+      {
+        textName: '消灾吉祥',
+        textContent: ['消灾吉祥消灾吉祥', '这是第一行的一些字', '这是第一一行的一行的一些字', '这是第一行的一些字', '这是第一字', '这是第一行的一一行的一些字', '这是第一一些字', '这是第些字', '这是第一行的一些字', '这是第一一行的一行的一些字', '这是第一行的一些字', '这是第一字', '这是第一行的一一行的一些字', '这是第一一些字',],
+        textStatus: 'free'
+      },
+      {
+        textName: '往生咒',
+        textContent: ['往生咒往生咒', '这是第一行的一些字', '这是第一一行的一行的一些字', '这是第一行的一些字', '这是第一字', '这是第一行的一一行的一些字', '这是第一一些字', '这是第些字', '这是第一行的一些字', '这是第一一行的一行的一些字', '这是第一行的一些字', '这是第一字', '这是第一行的一一行的一些字', '这是第一一些字',],
+        textStatus: 'free'
+      }
     ]
   },
 
   //事件处理函数qiao
   qiao: function () {
+    this.data.textDis.begin(this.data.centerText);
     this.audioCtx1.play();
     console.log('qiao')
 
@@ -76,33 +94,25 @@ Page({
         isMuyuActive: false
       });
 
-    }, 160);
+    }, 150);
 
     if (this.data.isPlay == false) {
-      clearInterval(interval);
-      interval = setInterval(function () {
-        that.setData({
-          top: that.data.top - 1
-        });
-      }, 50)
       //主音乐相关
       // this.audioCtx.play();
 
       clearTimeout(timeOut)
-
+      //间隔事件到了
       timeOut = setTimeout(function () {
         //主音乐相关
         // that.audioCtx.pause();
         // that.audioCtx.seek(5);
-
-        clearInterval(interval);
+        that.data.textDis.stop();
         that.upLoadScore();
         that.setData({
-          top: 0,
-          tapNum: 0,
+          // tapNum: 0,
           baseNum: 1
         });
-      }, 800);
+      }, 700);
     }
   },
   //切换音乐列表部分
@@ -120,15 +130,18 @@ Page({
     });
     let index = event.currentTarget.dataset.index;
     this.setData({
-      musicSelect: index
+      musicSelect: index,
+      centerText:this.data.textArr[index].textContent
     });
     //主音乐相关
     // this.audioCtx.src = this.data.musics[index].musicSrc;
     // this.audioCtx.seek(5);
-    console.log('经文已切换为:' + this.data.musics[index].musicName)
+    this.data.textDis.indexindex=1;
+    this.data.textDis.y = 100;
+    console.log('经文已切换为:' + this.data.textArr[index].textName)
   },
 
-
+  //自动敲击
   autoQiao() {
     if (!this.data.isAutoQiao) {
       this.setData({
@@ -158,43 +171,20 @@ Page({
     this.audioCtx1 = wx.createInnerAudioContext();
     this.audioCtx1.src = 'musics/muyu1.mp3';
 
+    //获取canvas上下文
     var context = wx.createCanvasContext('firstCanvas')
-
-    var ctx=new Ctx(context);
-  
-    var indexindex=1;
-    var count=0;
-    var y=100;
-    var newArr;
-    var textArr = ['这是第些字', '这是第一行的一些字', '这是第一一行的一行的一些字', '这是第一行的一些字', '这是第一字', '这是第一行的一一行的一些字', '这是第一一些字', '这是第些字', '这是第一行的一些字', '这是第一一行的一行的一些字', '这是第一行的一些字', '这是第一字', '这是第一行的一一行的一些字', '这是第一一些字',]
-    console.log(totalLength(textArr))
-    newArr = textArr.slice(0, indexindex++);
-    ctx.strokeTextArr(textArr, '#ccc', 160, y, 30);
-    ctx.fillTextArr([], 'yellow', 160, y, 30);
-    ctx.draw()
-
-    textInterval=setInterval(function(){
-      count++;
-      y-=0.35;
-      if ( count/120>1 ) {
-        console.log('do')
-        count-=120;
-        if (indexindex>textArr.length) {
-          y=180;
-          indexindex=1;
-        }
-        newArr = textArr.slice(0, indexindex++);
+    var ctx = new Ctx(context);
+    var textDis = new TextDisplay(ctx);
+    this.setData(
+      {
+        textDis
       }
-      ctx.strokeTextArr(textArr, '#ccc', 160, y, 30);
-      ctx.fillTextArr(newArr, 'yellow', 160, y, 30);
-      ctx.draw()
-    },15);
- 
+    )
 
   },
 
   onLoad: function () {
-      var that=this;
+    var that = this;
     let avatarUrl = wx.getStorageSync('avatarUrl');
     this.setData({
       avatarUrl
@@ -209,7 +199,7 @@ Page({
         wx.setStorageSync('totalScore', res.data.userStatus.totalscore);
         wx.setStorageSync('bonus', res.data.userStatus.bonus);
         that.setData({
-          bonus:res.data.userStatus.bonus
+          bonus: res.data.userStatus.bonus
         })
       },
       fail(error) {
@@ -226,7 +216,7 @@ Page({
     clearInterval(autoInterval);
     clearInterval(textInterval);
     this.setData({
-      isAutoQiao:false
+      isAutoQiao: false
     });
   },
 
@@ -239,9 +229,15 @@ Page({
       hasUserInfo: true
     })
   },
-  
+
   upLoadScore() {
-    let score = this.data.tapNum;
+
+    let score = this.data.tapNum - this.data.lastTapNum;
+    this.setData({
+      lastTapNum: this.data.tapNum
+    });
+
+
     var options = {
       url: config.service.upLoadScoreUrl,
       login: true,
@@ -284,7 +280,7 @@ Page({
     if (this.data.tapNum / 19 > this.data.baseNum) {
       let isAuto = this.data.isAutoQiao;
       let baseNum = this.data.baseNum;
-      var that=this;
+      var that = this;
       var options = {
         url: config.service.lottoUrl,
         login: true,
@@ -299,10 +295,10 @@ Page({
         },
         success(res) {
           console.log('res:', res);
-          if (res.data.status==1) {
+          if (res.data.status == 1) {
             that.coinAdd();
             that.setData({
-              bonus:res.data.bonus
+              bonus: res.data.bonus
             })
           }
 
@@ -320,34 +316,34 @@ Page({
     }
   },
 
-  coinAdd(){
+  coinAdd() {
     console.log('coin add')
     this.setData({
-      isFoActive:true,
-      coinAdded:true
+      isFoActive: true,
+      coinAdded: true
     })
-    setTimeout(function(){
+    setTimeout(function () {
       this.setData({
         isFoActive: false,
-        coinAdded:false
+        coinAdded: false
       })
-    }.bind(this),1500);
+    }.bind(this), 1500);
   }
 
 })
 
 
-
+//canvas绘画对象
 class Ctx {
-  constructor(ctx){
-    this.ctx=ctx;
-    
+  constructor(ctx) {
+    this.ctx = ctx;
+
   }
-  fillText(text,color,x,y){
+  fillText(text, color, x, y) {
     this.ctx.textAlign = 'center'
-    this.ctx.fillStyle=color;
+    this.ctx.fillStyle = color;
     this.ctx.setFontSize(18)
-    this.ctx.fillText(text,x,y);
+    this.ctx.fillText(text, x, y);
     this.ctx.fillStyle = 'black';
   }
   fillTextArr(textArr, color, x, y, height) {
@@ -362,24 +358,67 @@ class Ctx {
     this.ctx.strokeText(text, x, y);
     this.ctx.strokeStyle = 'black';
   }
-  strokeTextArr(textArr,color,x,y,height) {
-    textArr.forEach(function(item,index){
-      this.strokeText(item,color,x,y+index*height);
+  strokeTextArr(textArr, color, x, y, height) {
+    textArr.forEach(function (item, index) {
+      this.strokeText(item, color, x, y + index * height);
     }.bind(this))
   }
-  draw(){
+  draw() {
     this.ctx.draw()
   }
 }
 
-function convertTextArr(index,arr){
-  var tempIndex=index;
-  let aimArr=[];
+function convertTextArr(index, arr) {
+  var tempIndex = index;
+  let aimArr = [];
 }
 
 function totalLength(textArr) {
- let long=textArr.reduce(function(aim,item){
-    return aim+=item;
-  },'')
+  let long = textArr.reduce(function (aim, item) {
+    return aim += item;
+  }, '')
   return long.length;
+}
+
+
+//文字滚动对象
+class TextDisplay {
+  constructor(ctx) {
+    this.ctx = ctx;
+    this.status = false;
+    this.indexindex = 1;
+    this.y = 100;
+    this.count = 0;
+  }
+  begin(textArr) {
+    if (!this.status) {
+      console.log(' test reset')
+      let newArr = textArr.slice(0, this.indexindex);
+      this.status = true;
+      this.intervalFlag = setInterval(function () {
+        this.count++;
+        this.y -= 0.35;
+        if (this.count / 90 > 1) {
+          this.count -= 90;
+          if (this.indexindex > textArr.length) {
+            this.y = 100;
+            this.indexindex = 1;
+          }
+          newArr = textArr.slice(0, this.indexindex++);
+
+        }
+
+        this.ctx.fillTextArr(textArr, '#504f4c', 150, this.y, 30);
+        this.ctx.fillTextArr(newArr, '#ff6f16', 150, this.y, 30);
+        this.ctx.draw()
+
+      }.bind(this), 15);
+
+    }
+  }
+  stop() {
+    clearInterval(this.intervalFlag);
+    this.status = false;
+  }
+
 }

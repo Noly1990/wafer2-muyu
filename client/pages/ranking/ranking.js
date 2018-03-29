@@ -260,13 +260,14 @@ Page({
         tapNum: 0
       }
     ],
-    localIndex: -1,
+    localIndex: 60,
     myScore: 200,
     userName: '未上榜的玩家'
   },
   //获取排行数据
   getRanking() {
     var that = this;
+
     var options = {
       url: config.service.getRankingUrl,
       login: true,
@@ -288,19 +289,20 @@ Page({
 
         let nickName = wx.getStorageSync('nickName');
         let avatarUrl = wx.getStorageSync('avatarUrl');
+        let openId=wx.getStorageSync('openId')
         let index = -1;
-        console.log('nick', nickName, formatArr)
-        console.log(formatArr.some(function (item) {
-          return item.userName === nickName
+        formatArr.forEach(function (item,i) {
+          if (item.openId==openId) {
+            console.log(i)
+             index=i;
+          }
         })
-        )
-
-
-
         that.setData({
           rankings: oldArr,
           nickName,
-          avatarUrl
+          avatarUrl,
+          localIndex:index,
+          myScore:res.data.userStatus.totalscore
         });
 
       },
@@ -314,6 +316,7 @@ Page({
       }
     }
     qcloud.request(options);
+    
   },
   /**
    * 生命周期函数--监听页面加载
@@ -385,6 +388,7 @@ function formatRankingLists(rankingLists) {
     tempItem.userName = rankingLists[i].userInfo.nickName;
     tempItem.userAvator = rankingLists[i].userInfo.avatarUrl;
     tempItem.tapNum = rankingLists[i].totalscore;
+    tempItem.openId = rankingLists[i].userInfo.openId;
     newLists.push(tempItem)
   }
   return newLists;

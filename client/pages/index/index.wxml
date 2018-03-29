@@ -1,28 +1,33 @@
 <!--index.wxml-->
 <view class="container">
   <!-- <button bindtap='coinUp'>text coin</button>  -->
-  <image class='back-img' src='./back.png'></image>
+  <image class='back-img' src='./back.jpg'></image>
   <image class='user-avatar' src='{{avatarUrl}}'></image>
+
+
   <view class='bonus-box'>
-    <image class='coin-icon' src='./coin.png'></image>
-    {{bonus}}
+    <image class='bonus-img' src='./bonus-box.png'></image>
+    <text class='bonus-text'>{{bonus}}</text>
     <text class='coin-add {{coinAdded?"coin-add-active":""}}'>+10</text>
   </view>
   <image class='auto-qiao' src='{{autoImgUrl}}' bindtap='autoQiao'>自动敲</image>
   <view class='music-select'>
     <image src='./music.png' class='music-btn' bindtap='showMusicList'></image>
     <view class='music-toggle' wx:if="{{isMusic}}">
-      <view class="music-item {{musicSelect===index?'music-active':''}}" wx:for="{{musics}}" data-index="{{index}}" bindtap='changeMusic' wx:key="{{index}}">{{item.musicName}}</view>
+      <view class="music-item {{musicSelect===index?'music-active':''}}" wx:for="{{textArr}}" data-index="{{index}}" bindtap='changeMusic' wx:key="{{index}}">{{item.textName}}</view>
     </view>
   </view>
-
+<canvas class="canvas-box" canvas-id="firstCanvas"></canvas>
   <view class="main-content">
     <!-- <image class='light-img {{isLight?"light-active":""}}' src='./fo-light.png'></image>
     <image class='light-img {{isLight?"light-active":""}}' src='./fo-light2.png'></image>
     <image class='fo-img {{isFoActive?"fo-active":""}}' src='./fo.png'></image> -->
+    
     <view class='score-text'>
-      <text>{{tapNum}}</text>
+      <image class='socre-box' src='./score-box.png'></image>
+      <text class='score-num'>{{tapNum}}</text>
     </view>
+
     <view class='muyu-box'>
       <image bindtap="qiao" class='muyu-img {{isMuyuActive?"muyu-active":""}}' src="./muyu-s.png"></image>
     </view>
@@ -31,6 +36,6 @@
     <view class='words-window' style='top:{{top}}rpx'>{{centerText}}</view>
   </view> -->
 
-  <canvas class="canvas-box" canvas-id="firstCanvas"></canvas>
+
   <tabbar active="0"></tabbar>
 </view>

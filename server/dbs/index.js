@@ -4,7 +4,7 @@ const { mysql } = require('../qcloud.js');
 //获取排行榜信息
 async function getRankingLists() {
   return new Promise(function (resovle, reject) {
-    mysql('cAuth').table('cSessionInfo').select('user_info', 'totalscore').orderBy('totalscore', 'desc').limit(15).then(res => {
+    mysql('cAuth').table('cSessionInfo').select('user_info', 'totalscore').orderBy('totalscore', 'desc').limit(50).then(res => {
       resovle(res);
     }, err => {
       reject(err)

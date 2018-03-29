@@ -95,7 +95,7 @@ Page({
     var that = this;
     console.log('用户发起了分享');
     return {
-      title: '新年祈福，心缘木鱼',
+      title: '静心祈福，心缘木鱼',
       path: 'pages/index/index',
       success: function (res) {
         // 转发成功

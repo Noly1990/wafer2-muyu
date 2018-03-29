@@ -21,7 +21,7 @@
   </view>
 
 
-  <view class='my-bonus-title'><image class='title-img' src='./jfc.png'></image>({{collectionsNum}}/25）</view>
+  <view class='my-bonus-title'><image class='title-img' src='./jfc.png'></image>({{collectionsNum}}/{{total}}）</view>
 
 
   <swiper class='swiper-box' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
