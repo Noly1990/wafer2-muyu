@@ -383,7 +383,7 @@ Page({
 
 function formatRankingLists(rankingLists) {
   let newLists = [];
-  let length = rankingLists.length > 10 ? 10 : rankingLists.length;
+  let length = rankingLists.length > 50 ? 50 : rankingLists.length;
   for (let i = 0; i < length; i++) {
     let tempItem = {};
     tempItem.userName = rankingLists[i].userInfo.nickName;

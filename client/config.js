@@ -6,9 +6,9 @@
 // var host = '59431301.qcloud.la';
 //dckeayxo.qcloud.la
 //测试环境
-var host = 'dckeayxo.qcloud.la';
+// var host = 'dckeayxo.qcloud.la';
 //生产环境
-// var host = '556351447.lxxiyou.cn';
+ var host = '556351447.lxxiyou.cn';
 
 var config = {
 
