@@ -9,10 +9,10 @@ page {
 }
 
 .auto-qiao {
-  width: 100rpx;
-  height: 100rpx;
+  width: 85rpx;
+  height: 85rpx;
   position: absolute;
-  right: 5%;
+  right: 6%;
   top: 12%;
   z-index: 15;
 }
@@ -77,16 +77,17 @@ page {
 
 .muyu-box {
   margin: 0 auto;
-  width: 260rpx;
-  height: 250rpx;
+  width: 280rpx;
+  height: 240rpx;
   margin-top: 50rpx;
   transform: translateX(5rpx)
 }
 
 .muyu-img {
+  margin: 0 auto;
   display: block;
-  width: 260rpx;
-  height: 250rpx;
+  width: 250rpx;
+  height: 220rpx;
 }
 
 .muyu-active {
@@ -129,14 +130,17 @@ page {
   height: 80rpx;
   position: absolute;
   z-index: -20;
-  top: 0;
+  top: 20rpx;
   left: 50%;
   transform: translateX(-50%);
 }
 
 .score-num {
   position: relative;
-  top: -5rpx;
+  top: 15rpx;
+  background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(170, 71, 1, 1)), to(rgba(81, 37, 8, 1)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 @keyframes foShake {
