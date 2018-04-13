@@ -6,14 +6,19 @@ page {
   padding: 0;
   background-color: #d8b36d;
   overflow: hidden;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 .auto-qiao {
-  width: 85rpx;
-  height: 85rpx;
+  width: 75rpx;
+  height: 75rpx;
   position: absolute;
-  right: 6%;
-  top: 12%;
+  right: 50rpx;
+  top: 40rpx;
   z-index: 15;
 }
 
@@ -43,7 +48,7 @@ page {
 
 .bonus-box {
   position: absolute;
-  top:175rpx;
+  top: 175rpx;
   left: 30rpx;
 }
 
@@ -57,17 +62,17 @@ page {
 .bonus-text {
   position: relative;
   left: 65rpx;
-  top:2rpx;
+  top: 2rpx;
   font-size: 0.8rem;
 }
 
 .coin-add {
   position: relative;
   left: 85rpx;
-  top:2rpx;
+  top: 2rpx;
   font-size: 0.8rem;
   opacity: 0;
-  color:#fddf3a;
+  color: #fddf3a;
   transition: all 0.6s linear;
 }
 
@@ -80,7 +85,7 @@ page {
   width: 280rpx;
   height: 240rpx;
   margin-top: 50rpx;
-  transform: translateX(5rpx)
+  transform: translateX(5rpx);
 }
 
 .muyu-img {
@@ -143,38 +148,17 @@ page {
   -webkit-text-fill-color: transparent;
 }
 
-@keyframes foShake {
-  0% {
-    transform: translateX(0px);
-  }
-
-  25% {
-    transform: translateX(10px);
-  }
-
-  50% {
-    transform: translateX(0px);
-  }
-
-  75% {
-    transform: translateX(-10px);
-  }
-
-  100% {
-    transform: translateX(0px);
-  }
-}
 
 .music-btn {
-  width: 70rpx;
-  height: 70rpx;
+  width: 65rpx;
+  height: 65rpx;
 }
 
 .music-select {
   display: block;
   padding: 5rpx;
   position: absolute;
-  top: 30rpx;
+  top: 150rpx;
   right: 50rpx;
   font-size: 13px;
   text-align: center;
@@ -194,22 +178,6 @@ page {
 .music-active {
   background-color: orange;
   border-radius: 10rpx;
-}
-
-.light-img {
-  margin: 0 auto;
-  width: 760rpx;
-  height: 790rpx;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%);
-  z-index: -1;
-  opacity: 0.2;
-  transition: all 0.2s linear;
-}
-
-.light-active {
-  opacity: 0.9;
 }
 
 .words-box {
@@ -235,8 +203,10 @@ page {
 }
 
 .canvas-box {
+  display: block;
   width: 300px;
   height: 150px;
   margin: 0 auto;
   margin-top: 230rpx;
+  overflow: hidden;
 }

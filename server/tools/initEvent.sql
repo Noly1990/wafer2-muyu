@@ -1,4 +1,4 @@
-set GLOBAL event_scheduler = ON; 
+-- set GLOBAL event_scheduler = ON; 
 set time_zone = '+8:00'; 
 
 use cAuth;

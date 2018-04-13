@@ -3,9 +3,8 @@
 var qcloud = require('../../vendor/wafer2-client-sdk/index.js')
 var config = require('../../config');
 
-
 const app = getApp()
-var timeOut, interval, autoInterval, textInterval;
+var timeOut, autoInterval, textInterval;
 Page({
   data: {
     centerText: [''],
@@ -28,46 +27,20 @@ Page({
     isMuyuActive: false,
     isFoActive: false,
     musicSelect: 0,
-    //http://mp3.qqmusic.cc/yq/204173169.mp3
-    //http://111.231.143.94/music/panama.mp3
-    musics: [
-      //｛musicName: 'Panama',
-      //   musicSrc: 'http://111.231.143.94/music/panama.mp3',
-      //   musivAuthor: 'Matteo',
-      //   musicIndex: 0
-      // },
-      {
-        musicName: '大悲咒',
-        musicSrc: 'http://122.228.254.11/mp3.9ku.com/m4a/547320.m4a',
-        musivAuthor: '佛教音乐',
-        musicIndex: 2
-      },
-      {
-        musicName: '六字大明咒',
-        musicSrc: 'http://122.228.254.11/mp3.9ku.com/hot/2010/05-27/301973.mp3',
-        musivAuthor: '佛教音乐',
-        musicIndex: 1
-      }, {
-        musicName: '消灾吉祥神咒',
-        musicSrc: 'http://122.228.254.11/mp3.9ku.com/hot/2010/05-27/301978.mp3',
-        musivAuthor: '佛教音乐',
-        musicIndex: 3
-      }
-    ],
-    textArr:[
+    textArr: [
       {
         textName: '无',
         textContent: [],
         textStatus: 'free'
       },
       {
-        textName:'观音心经',
-        textContent: ['观自在菩萨，', '行深般若波罗蜜多时，', '照见五蕴皆空，', '度一切苦厄。', '舍利子，', '色不异空，', '空不异色，', '色即是空，', '空即是色。', '受想行识，', '亦复如是。', '舍利子，', '是诸法空相，', '不生不灭，', '不垢不净，', '不增不减，', '是故空中无色，', '无受想行识，', '无眼耳鼻舌身意，', '无色声香味触法，', '无眼界，', '乃至无意识界，', '无无明，', '亦无无明尽，', '乃至无老死，', '亦无老死尽。', '无苦集灭道，', '无智亦无得，', '以无所得故。', '菩提萨埵，', '依般若波罗蜜多故，', '心无罣碍。', '无罣碍故，', '无有恐怖，', '远离颠倒梦想，', '究竟涅槃。', '三世诸佛，', '依般若波罗蜜多故，', '得阿耨多罗三藐三菩提。', '故知般若波罗蜜多，', '是大神咒，', '是大明咒，', '是无上咒，', '是无等等咒。', '能除一切苦，', '真实不虚。', '故说般若波罗蜜多咒。', '即说咒曰：', '揭谛揭谛，', '波罗揭谛，', '波罗僧揭谛，', '菩提萨婆诃。'],
-        textStatus:'free'
+        textName: '观音心经',
+        textContent: ['观自在菩萨', '行深般若波罗蜜多时', '照见五蕴皆空', '度一切苦厄', '舍利子', '色不异空', '空不异色', '色即是空', '空即是色', '受想行识', '亦复如是', '舍利子', '是诸法空相', '不生不灭', '不垢不净', '不增不减', '是故空中无色', '无受想行识', '无眼耳鼻舌身意', '无色声香味触法', '无眼界', '乃至无意识界', '无无明', '亦无无明尽', '乃至无老死', '亦无老死尽', '无苦集灭道', '无智亦无得', '以无所得故', '菩提萨埵', '依般若波罗蜜多故', '心无罣碍', '无罣碍故', '无有恐怖', '远离颠倒梦想', '究竟涅槃', '三世诸佛', '依般若波罗蜜多故', '得阿耨多罗三藐三菩提', '故知般若波罗蜜多', '是大神咒', '是大明咒', '是无上咒', '是无等等咒', '能除一切苦', '真实不虚', '故说般若波罗蜜多咒', '即说咒曰：', '揭谛揭谛', '波罗揭谛', '波罗僧揭谛', '菩提萨婆诃'],
+        textStatus: 'free'
       },
       {
         textName: '消灾吉祥',
-        textContent: ['曩谟三满哆。', '母驮喃。阿钵啰底。', '贺多舍。娑曩喃。', '怛侄他。唵。', '佉佉。佉呬。', '佉呬。吽吽。', '入嚩啰。入嚩啰。', '钵啰入嚩啰。', '钵啰入嚩啰。', '底瑟姹。底瑟姹。', '瑟致哩。瑟致哩。', '娑癹吒。娑癹吒。', '扇底迦。室哩曳。', '娑嚩诃',],
+        textContent: ['曩谟三满哆', '母驮喃阿钵啰底', '贺多舍娑曩喃', '怛侄他唵', '佉佉佉呬', '佉呬吽吽', '入嚩啰入嚩啰', '钵啰入嚩啰', '钵啰入嚩啰', '底瑟姹底瑟姹', '瑟致哩瑟致哩', '娑癹吒娑癹吒', '扇底迦室哩曳', '娑嚩诃',],
         textStatus: 'free'
       },
       {
@@ -80,7 +53,9 @@ Page({
 
   //事件处理函数qiao
   qiao: function () {
+
     this.data.textDis.begin(this.data.centerText);
+
     this.audioCtx1.play();
     console.log('qiao')
 
@@ -102,15 +77,11 @@ Page({
     }, 150);
 
     if (this.data.isPlay == false) {
-      //主音乐相关
-      // this.audioCtx.play();
 
       clearTimeout(timeOut)
+
       //间隔事件到了
       timeOut = setTimeout(function () {
-        //主音乐相关
-        // that.audioCtx.pause();
-        // that.audioCtx.seek(5);
         that.data.textDis.stop();
         that.upLoadScore();
         that.setData({
@@ -133,17 +104,17 @@ Page({
     this.setData({
       isMusic: !this.data.isMusic
     });
+
     let index = event.currentTarget.dataset.index;
+
     this.setData({
       musicSelect: index,
-      centerText:this.data.textArr[index].textContent
+      centerText: this.data.textArr[index].textContent
     });
-    //主音乐相关
-    // this.audioCtx.src = this.data.musics[index].musicSrc;
-    // this.audioCtx.seek(5);
 
-    this.data.textDis.indexindex=1;
-    this.data.textDis.y = 100;
+
+    this.data.textDis.init();
+
     if (this.data.isAutoQiao) {
       this.data.textDis.stop();
       this.data.textDis.begin(this.data.centerText);
@@ -159,9 +130,11 @@ Page({
         isAutoQiao: true,
         autoImgUrl: './stop.png'
       });
+
       autoInterval = setInterval(function () {
         this.qiao();
       }.bind(this), 800);
+
     } else {
       this.setData({
         isAutoQiao: false,
@@ -170,7 +143,6 @@ Page({
       clearInterval(autoInterval);
     }
   },
-
 
   onReady: function (e) {
     //主音乐相关
@@ -290,7 +262,7 @@ Page({
     }
   },
   checkLotto() {
-    if (this.data.tapNum / 19 > this.data.baseNum) {
+    if (this.data.tapNum / 29 > this.data.baseNum) {
       let isAuto = this.data.isAutoQiao;
       let baseNum = this.data.baseNum;
       var that = this;
@@ -360,22 +332,24 @@ class Ctx {
     this.ctx.fillStyle = 'black';
   }
   fillTextArr(textArr, color, x, y, height) {
+
     textArr.forEach(function (item, index) {
       this.fillText(item, color, x, y + index * height);
     }.bind(this))
+
   }
-  strokeText(text, color, x, y) {
-    this.ctx.textAlign = 'center'
-    this.ctx.strokeStyle = color;
-    this.ctx.setFontSize(18)
-    this.ctx.strokeText(text, x, y);
-    this.ctx.strokeStyle = 'black';
-  }
-  strokeTextArr(textArr, color, x, y, height) {
-    textArr.forEach(function (item, index) {
-      this.strokeText(item, color, x, y + index * height);
-    }.bind(this))
-  }
+  // strokeText(text, color, x, y) {
+  //   this.ctx.textAlign = 'center'
+  //   this.ctx.strokeStyle = color;
+  //   this.ctx.setFontSize(18)
+  //   this.ctx.strokeText(text, x, y);
+  //   this.ctx.strokeStyle = 'black';
+  // }
+  // strokeTextArr(textArr, color, x, y, height) {
+  //   textArr.forEach(function (item, index) {
+  //     this.strokeText(item, color, x, y + index * height);
+  //   }.bind(this))
+  // }
   draw() {
     this.ctx.draw()
   }
@@ -399,33 +373,46 @@ class TextDisplay {
   constructor(ctx) {
     this.ctx = ctx;
     this.status = false;
-    this.indexindex = 1;
+    this.divideIndex = 1;
+    this.beginIndex = 0;
     this.y = 100;
     this.count = 0;
   }
   begin(textArr) {
-    if (!this.status&&textArr!=='') {
-      console.log(' test reset')
-      let newArr = textArr.slice(0, this.indexindex);
+
+    if (!this.status && textArr !== '') {
+
       this.status = true;
+
       this.intervalFlag = setInterval(function () {
-        this.count++;
-        this.y -= 0.30;
-        if (this.count / 100 > 1) {
-          this.count -= 100;
-          if (this.indexindex > textArr.length) {
-            this.y = 100;
-            this.indexindex = 1;
+
+        this.y -= 0.3;
+
+        if (this.y < -35) {
+          console.log('y过线了')
+          this.y += 30;
+          this.beginIndex+=1;
+          if (this.beginIndex > textArr.length-4) {
+            this.init();
           }
-          newArr = textArr.slice(0, this.indexindex++);
-
         }
+        if (this.y<70) {
+          this.divideIndex=2;
+        }
+        if (this.y < 40) {
+          this.divideIndex = 3;
+        }
+        if (this.y < 10) {
+          this.divideIndex = 4;
+        }
+        let coverArr = textArr.slice(this.beginIndex, this.beginIndex + this.divideIndex);
+        let baseArr = textArr.slice(this.beginIndex, this.beginIndex + 7);
+        this.ctx.fillTextArr(baseArr, '#504f4c', 150, this.y, 30);
+        this.ctx.fillTextArr(coverArr, '#ff6f16', 150, this.y, 30);
 
-        this.ctx.fillTextArr(textArr, '#504f4c', 150, this.y, 30);
-        this.ctx.fillTextArr(newArr, '#ff6f16', 150, this.y, 30);
         this.ctx.draw()
 
-      }.bind(this), 15);
+      }.bind(this), 16);
 
     }
   }
@@ -433,5 +420,11 @@ class TextDisplay {
     clearInterval(this.intervalFlag);
     this.status = false;
   }
-
+  init(){
+    this.beginIndex = 0;
+    this.y = 100;
+    this.divideIndex = 1;
+  }
 }
+
+
