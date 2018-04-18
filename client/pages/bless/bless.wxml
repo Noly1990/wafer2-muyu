@@ -1,6 +1,6 @@
 <!--pages/bless/bless.wxml-->
 <view class='bless'>
-<image class='back-img' src='/img/bg1.jpg'></image>
+  <image class='back-img' src='/img/bg1.jpg'></image>
 
 
   <view class='bonus-box'>
@@ -8,7 +8,9 @@
     <text class='bonus-text'>{{userBonus}}</text>
   </view>
   <view class='share-box'>
-    <button class='share-btn' open-type="share"><image class='share-img' src='./share.png'></image></button>
+    <button class='share-btn' open-type="share">
+      <image class='share-img' src='./share.png'></image>
+    </button>
   </view>
 
   <view class='coin-box'>
@@ -19,10 +21,12 @@
     <image class='reward-img' src='./itemback.png'></image>
     <view class='reward-text'>{{rewardText}}</view>
   </view>
-  <button class="{{btnDisable||blessCheck?'bless-btn-none':'bless-btn'}}" disabled='' bindtap='beginBless'><image class='btn-img' src='./bless-btn.png'></image></button>
+  <button class="{{btnDisable||blessCheck?'bless-btn-none':'bless-btn'}}" disabled='' bindtap='beginBless'>
+    <image class='btn-img' src='./bless-btn.png'></image>
+  </button>
   <view class='bless-box'>
-    <image class='img-bottom' src='./gdx.png'></image>
     <image class='intro-img' src='./intro.png'></image>
+    <image class='img-bottom' src='./gdx.png'></image>
   </view>
 
   <tabbar active="2"></tabbar>

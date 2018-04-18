@@ -19,7 +19,7 @@ page {
 
 .bonus-img {
   position: absolute;
-  width: 210rpx;
+  width: 180rpx;
   height: 75rpx;
   z-index: -10;
 }
@@ -28,6 +28,9 @@ page {
   position: relative;
   left: 85rpx;
   top:15rpx;
+  background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(170, 71, 1, 1)), to(rgba(81, 37, 8, 1)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .share-box {
@@ -65,7 +68,7 @@ page {
   height: 120rpx;
   position: absolute;
   z-index: 15;
-  top: 150rpx;
+  top: 300rpx;
   opacity: 0;
 }
 
@@ -92,11 +95,11 @@ page {
 
 @keyframes drop {
   0% {
-    top: 150rpx;
+    top: 300rpx;
   }
 
   100% {
-    top: 600rpx;
+    top: 750rpx;
   }
 }
 
@@ -111,7 +114,7 @@ page {
   width: 500rpx;
   height: 400rpx;
   position: absolute;
-  top: 0;
+  top: 60rpx;
   left: 50%;
   transform: translateX(-50%);
   z-index: 210;
@@ -122,7 +125,7 @@ page {
   height: 90rpx;
   position: relative;
   left: 50%;
-  top: 380rpx;
+  top: -25rpx;
   transform: translateX(-50%);
 }
 

@@ -22,7 +22,19 @@ Page({
     wx.showShareMenu({
       withShareTicket: true
     })
-    this.audioCtx = wx.createInnerAudioContext();
+    this.audioCtx1 = wx.createInnerAudioContext();
+    this.audioCtx1.src = 'musics/blink.mp3';
+    this.audioCtx1.volume=0.3;
+    this.audioCtx2 = wx.createInnerAudioContext();
+    this.audioCtx2.src = 'musics/coin.mp3';
+    this.audioCtx2.volume = 0.3;
+    this.audioCtx3 = wx.createInnerAudioContext();
+    this.audioCtx3.src = 'musics/bgmusic.mp3';
+    this.audioCtx3.volume = 0.6;
+    this.audioCtx3.autoplay=true;
+    this.audioCtx3.loop=true;
+    this.audioCtx3.obeyMuteSwitch=false;
+    this.audioCtx3.play();
     var that = this;
     var options = {
       url: config.service.getUserBonusUrl,
@@ -64,14 +76,14 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    this.audioCtx3.stop();
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    this.audioCtx3.stop();
   },
 
   /**
@@ -97,6 +109,7 @@ Page({
     return {
       title: '静心祈福，心缘木鱼',
       path: 'pages/index/index',
+      imageUrl:'/img/share.jpg',
       success: function (res) {
         // 转发成功
         console.log('分享成功的res', res);
@@ -145,8 +158,8 @@ Page({
       blessCheck: true,
       isReward: false
     })
-    this.audioCtx.src = 'musics/blink.mp3';
-    this.audioCtx.play()
+    
+    this.audioCtx1.play()
     setTimeout(function () {
       this.setData({
         isDrop: true
@@ -157,8 +170,7 @@ Page({
           isSpin: false,
           isReward: true
         })
-        this.audioCtx.src = 'musics/coin.mp3';
-        this.audioCtx.play()
+        this.audioCtx2.play()
         setTimeout(function () {
           this.setData({
             btnDisable: false
@@ -200,7 +212,7 @@ Page({
 
   },
   beginBless() {
-
+    this.audioCtx3.play();
     if (!(this.data.blessCheck || this.data.btnDisable)) {
       console.log('bless')
       if (this.data.userBonus - 10 >= 0) {
@@ -215,10 +227,5 @@ Page({
         console.log('抱歉，福缘不够请前往木鱼获取')
       }
     }
-
-
-
-
-
   }
 })

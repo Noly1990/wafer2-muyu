@@ -14,8 +14,8 @@ page {
 }
 
 .auto-qiao {
-  width: 75rpx;
-  height: 75rpx;
+  width: 65rpx;
+  height: 65rpx;
   position: absolute;
   right: 50rpx;
   top: 40rpx;
@@ -34,7 +34,7 @@ page {
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 120rpx;
+  bottom: 160rpx;
 }
 
 .user-avatar {
@@ -54,16 +54,19 @@ page {
 
 .bonus-img {
   position: absolute;
-  width: 160rpx;
-  height: 55rpx;
+  width: 140rpx;
+  height: 60rpx;
   z-index: -10;
 }
 
 .bonus-text {
   position: relative;
-  left: 65rpx;
+  left: 75rpx;
   top: 2rpx;
   font-size: 0.8rem;
+  background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(170, 71, 1, 1)), to(rgba(81, 37, 8, 1)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .coin-add {
@@ -82,8 +85,8 @@ page {
 
 .muyu-box {
   margin: 0 auto;
-  width: 280rpx;
-  height: 240rpx;
+  width: 480rpx;
+  height: 340rpx;
   margin-top: 50rpx;
   transform: translateX(5rpx);
 }
@@ -91,8 +94,8 @@ page {
 .muyu-img {
   margin: 0 auto;
   display: block;
-  width: 250rpx;
-  height: 220rpx;
+  width: 450rpx;
+  height: 320rpx;
 }
 
 .muyu-active {
@@ -143,6 +146,8 @@ page {
 .score-num {
   position: relative;
   top: 15rpx;
+  font-size: 28px;
+  font-weight: bold;
   background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(170, 71, 1, 1)), to(rgba(81, 37, 8, 1)));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -150,8 +155,8 @@ page {
 
 
 .music-btn {
-  width: 65rpx;
-  height: 65rpx;
+  width: 55rpx;
+  height: 55rpx;
 }
 
 .music-select {

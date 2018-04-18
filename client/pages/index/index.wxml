@@ -23,7 +23,6 @@
     <image class='fo-img {{isFoActive?"fo-active":""}}' src='./fo.png'></image> -->
     
     <view class='score-text'>
-      <image class='socre-box' src='./score-box.png'></image>
       <text class='score-num'>{{tapNum}}</text>
     </view>
 

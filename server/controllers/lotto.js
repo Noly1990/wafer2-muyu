@@ -15,7 +15,7 @@ module.exports = async (ctx, next) => {
     const isAuto = json.isAuto;
     const lottoBase = parseInt(json.lottoBase, 10);
     let multiple = lottoBase * 10 / 2000;
-    multiple=multiple>=0.15?0.15:multiple;
+    multiple=multiple>=0.2?0.2:multiple;
     multiple=multiple*(isAuto?1:2);
     console.log(multiple);
     let random = Math.random();
