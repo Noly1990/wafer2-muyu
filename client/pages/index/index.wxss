@@ -1,4 +1,5 @@
 /**index.wxss**/
+@import './animate.min.wxss';
 
 page {
   position: relative;
@@ -51,6 +52,67 @@ page {
   top: 175rpx;
   left: 30rpx;
 }
+
+.story-box {
+  position: absolute;
+  top: 260rpx;
+  left: 30rpx;
+  z-index: 50;
+}
+
+.story-img {
+  width: 150rpx;
+  height: 40rpx;
+}
+
+.story-content {
+  display: block;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+}
+
+
+.story-title {
+  font-weight: bold;
+  position: absolute;
+  top: 50rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.text-content {
+  position: absolute;
+  top: 180rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 70%;
+  height: 80%;
+  overflow: scroll;
+}
+
+
+
+.story-content-none {
+  display: none;
+}
+
+.story-content-back {
+  width: 100vw;
+  height: 100vh;
+}
+
+.story-back-btn {
+  position: absolute;
+  width:80rpx;
+  height: 80rpx;
+  top: 20rpx;
+  right: 20rpx;
+}
+
 
 .bonus-img {
   position: absolute;
@@ -152,7 +214,6 @@ page {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
 
 .music-btn {
   width: 55rpx;

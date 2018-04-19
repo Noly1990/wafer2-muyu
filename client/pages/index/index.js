@@ -27,6 +27,7 @@ Page({
     isMuyuActive: false,
     isFoActive: false,
     musicSelect: 0,
+    storyClass:'story-content-none',
     textArr: [
       {
         textName: '无',
@@ -97,6 +98,22 @@ Page({
       isMusic: !this.data.isMusic
     });
   },
+
+  //小故事按钮
+
+  storyTap(){
+    this.setData({
+      storyClass:'animated zoomIn story-content'
+    })
+    console.log('小故事')
+  },
+
+  backTap(){
+    this.setData({
+      storyClass: 'animated bounceOut story-content'
+    })
+  },
+
 
   //切换音乐部分
   changeMusic: function (event) {
