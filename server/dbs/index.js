@@ -132,6 +132,16 @@ async function setZeroUserShare(openId) {
   })
 }
 
+async function getAllStory(){
+  return new Promise(function (resovle, reject) {
+    mysql('cAuth').table('story').select('title','part1','part2').then(res => {
+      resovle(res);
+    }, err => {
+      reject(err)
+    })
+  })
+}
+
 
 module.exports = {
   getUserStatus,
@@ -145,5 +155,6 @@ module.exports = {
   initUserCollections,
   checkUserCollections,
   checkUserShare,
-  setZeroUserShare
+  setZeroUserShare,
+  getAllStory
 }

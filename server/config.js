@@ -19,15 +19,26 @@ const CONF = {
      * 测试:'bw9Y0eaLAm67wxfJ',
      * Root123456
      */
+    // mysql: {
+    //     host: '172.16.164.155',
+    //     //host: 'localhost',
+    //     port: 3306,
+    //     user: 'root',
+    //     db: 'cAuth',
+    //      pass: 'LP3CjxeLM3Wz9avE',
+    //     //pass:'bw9Y0eaLAm67wxfJ',
+    //     char: 'utf8mb4'
+    // },
     mysql: {
-        host: '172.16.164.155',
-        //host: 'localhost',
-        port: 3306,
-        user: 'root',
-        db: 'cAuth',
-         pass: 'LP3CjxeLM3Wz9avE',
-        //pass:'bw9Y0eaLAm67wxfJ',
-        char: 'utf8mb4'
+      //host: '172.16.164.155',
+      host: 'localhost',
+      port: 3306,
+      user: 'root',
+      db: 'cAuth',
+      //pass: 'LP3CjxeLM3Wz9avE',
+      //pass:'bw9Y0eaLAm67wxfJ',
+      pass:'wx35801fc4c64962f4',
+      char: 'utf8mb4'
     },
 
     cos: {

@@ -67,10 +67,11 @@ page {
 
 .story-content {
   display: block;
-  position: absolute;
+  position: fixed;
   width: 100vw;
   height: 100vh;
-  z-index: 1000;
+  z-index: 500;
+  transform: translateZ(110px);
 }
 
 
@@ -79,22 +80,27 @@ page {
   position: absolute;
   top: 50rpx;
   left: 50%;
+  width: 80%;
   transform: translateX(-50%);
   text-align: center;
 }
 
 .text-content {
   position: absolute;
-  top: 180rpx;
+  top: 150rpx;
   left: 50%;
   transform: translateX(-50%);
-  text-align: center;
-  width: 70%;
+  width: 80%;
   height: 80%;
   overflow: scroll;
 }
 
-
+.part2 {
+  margin-top: 20rpx;
+  padding: 5rpx;
+  border-radius: 10rpx;
+  background-color: rgba(255, 255, 255, 0.4)
+}
 
 .story-content-none {
   display: none;
@@ -208,7 +214,7 @@ page {
 .score-num {
   position: relative;
   top: 15rpx;
-  font-size: 28px;
+  font-size: 26px;
   font-weight: bold;
   background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(170, 71, 1, 1)), to(rgba(81, 37, 8, 1)));
   -webkit-background-clip: text;
@@ -273,6 +279,11 @@ page {
   width: 300px;
   height: 150px;
   margin: 0 auto;
-  margin-top: 230rpx;
+  margin-top: 200rpx;
   overflow: hidden;
+  z-index: 10;
+}
+
+.canvas-none {
+  display: none;
 }

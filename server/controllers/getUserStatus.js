@@ -1,5 +1,5 @@
 
-const { getUserStatus, initUserCollections, checkUserCollections } = require('../dbs/index.js')
+const { getUserStatus, initUserCollections, checkUserCollections, getAllStory } = require('../dbs/index.js')
 
 
 // 登录授权接口
@@ -14,19 +14,28 @@ module.exports = async (ctx, next) => {
     let openId = ctx.state.$wxInfo.userinfo.openId;
     let res = await getUserStatus(openId);
     let checkUserC = await checkUserCollections(openId);
+    let storyRes = await getAllStory();
+    let oneStory=randomStory(storyRes);
+    console.log('story', storyRes);
     if (!checkUserC.length) {
       let collections = {
         "open_id": openId,
         "count": 0,
         collection: []
       }
-      let jsonStr=JSON.stringify(collections);
-      let collectionRes=await initUserCollections(openId,jsonStr);
+      let jsonStr = JSON.stringify(collections);
+      let collectionRes = await initUserCollections(openId, jsonStr);
     }
     ctx.body = {
-      userStatus: res[0]
+      userStatus: res[0],
+      oneStory
     }
   } else {
     ctx.state.code = -1
   }
+}
+
+
+function randomStory(storyRes){
+  return storyRes[Math.floor(Math.random() * 3)];
 }

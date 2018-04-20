@@ -9,11 +9,13 @@
   padding: 10rpx 0;
   text-align: center;
   transform: translateZ(100px);
+  z-index: 200;
 }
 
 .tabbar-item {
   flex: 1;
-  height: 100rpx;
+  padding: 10rpx 20rpx;
+  height: 50rpx;
 }
 
 .tabbar-item-active {
@@ -27,7 +29,7 @@
   }
 
   100% {
-    transform: scale(1.1);
+    transform: scale(1.2);
   }
 }
 

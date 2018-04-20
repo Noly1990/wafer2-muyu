@@ -16,16 +16,15 @@
   <view class='{{storyClass}}'>
     <image class='story-content-back' src='./story-back.png'></image>
     <image class='story-back-btn' src='./back.png' bindtap='backTap'></image>
-    <text class='story-title'>如果很重，为什么不放下呢？</text>
+    <text class='story-title'>{{oneStory.title}}</text>
     <view class='text-content'>
-      
-      <view class='part1'>有个弟子去见他的师父。师父问他：“你最近怎么样？”他说：“我的心总是非常沉重。”然后徒弟就开始诉苦，讲他不欢喜什么、什么事不舒服，半小时过去了，师父一言不发，始终安静地听着。 　　等到他快讲完的时候，师父说：“可以了，不要再说了，我先出去一趟，等我回来，我们再继续说。”然后拿了一张白纸，让他托着跪在佛前。其实这位师父没有别的事，而是去休息了。 　　于是徒弟老老实实托着一张薄薄的白纸跪在佛前。十分钟过去了，他觉得有点儿撑不住了；二十分钟过去了，他觉得自己很辛苦；三十分钟过去了，这时他觉得这张白纸已不是一张，而是变成了上千张上万张白纸，重若千钧。　　这时师父出来了，慈祥地问他：“感觉如何？”他说：“师父呀，这纸怎么这么重？我快晕倒了。”师父说：“如果它很重，你为什么不把它放下呢？其实，一张纸很轻，可是你如果一直不把它放下的话，它就会变得很重。”
+      <view class='part1'>
+        <text space='emsp'>{{oneStory.part1}}</text>
       </view>
       <view class='part2'>
-        感悟： 　　我们的念头虽无形无相，也没有重量，可是如果你执着于它，不知道放下的话，它就会像这张纸一样，越来越沉重。 　　徒弟拿着这张纸是因为他的师父要求他这样做，可是我们呢，没有人要求你拿起你的执着，没有人不让你放下，那你为什么不放下？
+        <text space='emsp'>{{oneStory.part2}}</text>
       </view>
     </view>
-
   </view>
 
   <image class='auto-qiao' src='{{autoImgUrl}}' bindtap='autoQiao'>自动敲</image>
@@ -35,7 +34,7 @@
       <view class="music-item {{musicSelect===index?'music-active':''}}" wx:for="{{textArr}}" data-index="{{index}}" bindtap='changeMusic' wx:key="{{index}}">{{item.textName}}</view>
     </view>
   </view>
-  <canvas class="canvas-box" canvas-id="firstCanvas"></canvas>
+  <canvas class="{{canvasClass}}" canvas-id="firstCanvas"></canvas>
   <view class="main-content">
     <!-- <image class='light-img {{isLight?"light-active":""}}' src='./fo-light.png'></image>
     <image class='light-img {{isLight?"light-active":""}}' src='./fo-light2.png'></image>

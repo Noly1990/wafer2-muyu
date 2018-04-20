@@ -28,6 +28,7 @@ Page({
     isFoActive: false,
     musicSelect: 0,
     storyClass:'story-content-none',
+    canvasClass:'canvas-box',
     textArr: [
       {
         textName: '无',
@@ -102,16 +103,24 @@ Page({
   //小故事按钮
 
   storyTap(){
+    this.audioCtx3.play();
     this.setData({
-      storyClass:'animated zoomIn story-content'
+      storyClass:'animated zoomIn story-content',
+      canvasClass:'canvas-none'
     })
     console.log('小故事')
   },
 
   backTap(){
+    this.audioCtx3.stop();
     this.setData({
       storyClass: 'animated bounceOut story-content'
     })
+    setTimeout(function(){
+      this.setData({
+        canvasClass: 'canvas-box'
+      })
+    }.bind(this),1000);
   },
 
 
@@ -170,7 +179,12 @@ Page({
     // 使用 wx.createInnerAudioContext 获取 audio 上下文 context
     this.audioCtx1 = wx.createInnerAudioContext();
     this.audioCtx1.src = 'musics/muyu1.mp3';
-
+    this.audioCtx3 = wx.createInnerAudioContext();
+    this.audioCtx3.src = 'musics/bgmusic.mp3';
+    this.audioCtx3.volume = 0.6;
+    this.audioCtx3.loop = true;
+    this.audioCtx3.obeyMuteSwitch = false;
+    
     //获取canvas上下文
     var context = wx.createCanvasContext('firstCanvas')
     var ctx = new Ctx(context);
@@ -201,7 +215,8 @@ Page({
         wx.setStorageSync('openId', res.data.userStatus.open_id);
 
         that.setData({
-          bonus: res.data.userStatus.bonus
+          bonus: res.data.userStatus.bonus,
+          oneStory: res.data.oneStory
         })
       },
       fail(error) {
@@ -216,6 +231,7 @@ Page({
   onUnload: function () {
     console.log('主页unload')
     clearInterval(autoInterval);
+    this.audioCtx3.stop();
     this.data.textDis.stop();
     this.setData({
       isAutoQiao: false

@@ -22,9 +22,9 @@ Page({
     wx.showShareMenu({
       withShareTicket: true
     })
-    this.audioCtx1 = wx.createInnerAudioContext();
-    this.audioCtx1.src = 'musics/blink.mp3';
-    this.audioCtx1.volume=0.3;
+    // this.audioCtx1 = wx.createInnerAudioContext();
+    // this.audioCtx1.src = 'musics/blink.mp3';
+    // this.audioCtx1.volume=0.3;
     this.audioCtx2 = wx.createInnerAudioContext();
     this.audioCtx2.src = 'musics/coin.mp3';
     this.audioCtx2.volume = 0.3;
@@ -159,7 +159,7 @@ Page({
       isReward: false
     })
     
-    this.audioCtx1.play()
+    //this.audioCtx1.play()
     setTimeout(function () {
       this.setData({
         isDrop: true
